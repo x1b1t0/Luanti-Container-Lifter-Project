@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlantis - Crea tu propio servidor de Minetest</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap>
+
+    <style>
+        /* Estilo global */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Barra de navegación */
+        nav {
+            background-color: #333;
+            overflow: hidden;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1em;
+            padding: 14px 20px;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #444;
+        }
+
+        /* Header */
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 50px 0;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin: 0;
+            animation: slideIn 2s ease-out;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* Sección Introducción */
+ .intro {
+            text-align: center;
+            margin: 0 15%;
+            font-size: 1.2em;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .intro h2 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .intro p {
+            margin-bottom: 30px;
+        }
+
+        /* Sección Quiénes Somos */
+        .about-us {
+            display: flex;
+            justify-content: center;
+            margin: 50px 0;
+        }
+
+        .about-us div {
+            margin: 0 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .about-us img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Pie de página */
+        .footer {
+            background-color: #333;
+            color: white;
+           text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        .footer p {
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <h1>Bienvenido a Vortex</h1>
+    </header>
+
+    <!-- Introducción -->
+    <section class="intro">
+        <h2>¿Quiénes Somos?</h2>
+        <p>En Vortex ofrecemos una amplia variedad de periféricos de alta calidad para mej>
+        <p>Estamos comprometidos con ofrecer productos de la más alta calidad, con un exce>
+    </section>
+
+    <!-- Sección Quiénes Somos -->
+    <section class="about-us">
+        <div>
+            <img src="https://via.placeholder.com/300x200" alt="Imagen de la tienda">
+            <h3>Nuestra Historia</h3>
+            <p>Vortex nació con la idea de ofrecer periféricos de tecnología avanzada a pr>
+        </div>
+        <div>
+ <img src="https://via.placeholder.com/300x200" alt="Imagen de productos">
+            <h3>Productos de Calidad</h3>
+            <p>Cada uno de nuestros productos ha sido cuidadosamente seleccionado para gar>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <p>&copy; 2024 Vortex. Todos los derechos reservados. | Creado por Ivan Vivar</p>
+    </footer>
+
+</body>
+</html>
