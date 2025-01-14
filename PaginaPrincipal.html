@@ -1,177 +1,69 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atlantis - Crea tu propio servidor de Minetest</title>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap>
-
-    <style>
-        /* Estilo global */
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        /* Barra de navegación */
-        nav {
-            background-color: #333;
-            overflow: hidden;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        nav ul li {
-            margin: 0 20px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            font-weight: 600;
-            font-size: 1.1em;
-            padding: 14px 20px;
-            display: block;
-            transition: background-color 0.3s;
-        }
-
-        nav ul li a:hover {
-            background-color: #444;
-        }
-
-        /* Header */
-        header {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 50px 0;
-            margin-bottom: 30px;
-        }
-
-        header h1 {
-            font-size: 3.5em;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 600;
-            margin: 0;
-            animation: slideIn 2s ease-out;
-        }
-
-        @keyframes slideIn {
-            0% {
-                transform: translateX(-100%);
-            }
-            100% {
-                transform: translateX(0);
-            }
-        }
-
-        /* Sección Introducción */
- .intro {
-            text-align: center;
-            margin: 0 15%;
-            font-size: 1.2em;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .intro h2 {
-            font-size: 2.5em;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .intro p {
-            margin-bottom: 30px;
-        }
-
-        /* Sección Quiénes Somos */
-        .about-us {
-            display: flex;
-            justify-content: center;
-            margin: 50px 0;
-        }
-
-        .about-us div {
-            margin: 0 20px;
-            width: 300px;
-            text-align: center;
-        }
-
-        .about-us img {
-            width: 100%;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
-
-        /* Pie de página */
-        .footer {
-            background-color: #333;
-            color: white;
-           text-align: center;
-            padding: 20px;
-            margin-top: 50px;
-        }
-
-        .footer p {
-            font-size: 1em;
-        }
-    </style>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Atlantis - Minetest Server Hosting</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Barra de navegación -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="productos.html">Productos</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-    </nav>
-
-    <!-- Header -->
+    <!-- Header Section -->
     <header>
-        <h1>Bienvenido a Vortex</h1>
+        <div class="container">
+            <h1>Welcome to Atlantis</h1>
+            <p>Your reliable platform to host and manage Minetest servers with ease.</p>
+        </div>
     </header>
 
-    <!-- Introducción -->
-    <section class="intro">
-        <h2>¿Quiénes Somos?</h2>
-        <p>En Vortex ofrecemos una amplia variedad de periféricos de alta calidad para mej>
-        <p>Estamos comprometidos con ofrecer productos de la más alta calidad, con un exce>
-    </section>
-
-    <!-- Sección Quiénes Somos -->
-    <section class="about-us">
-        <div>
-            <img src="https://via.placeholder.com/300x200" alt="Imagen de la tienda">
-            <h3>Nuestra Historia</h3>
-            <p>Vortex nació con la idea de ofrecer periféricos de tecnología avanzada a pr>
-        </div>
-        <div>
- <img src="https://via.placeholder.com/300x200" alt="Imagen de productos">
-            <h3>Productos de Calidad</h3>
-            <p>Cada uno de nuestros productos ha sido cuidadosamente seleccionado para gar>
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Atlantis</h2>
+            <p>Atlantis provides high-quality server hosting specifically designed for Minetest, the open-source sandbox game inspired by Minecraft. Whether you're a casual player or a server admin, our hosting solutions are tailored to meet all your needs, from smooth performance to easy-to-use management tools.</p>
         </div>
     </section>
 
-    <!-- Pie de página -->
-    <footer class="footer">
-        <p>&copy; 2024 Vortex. Todos los derechos reservados. | Creado por Ivan Vivar</p>
+    <!-- Features Section -->
+    <section id="features">
+        <div class="container">
+            <h2>Features</h2>
+            <ul>
+                <li><strong>High Performance:</strong> Enjoy lag-free gameplay with optimized servers running on powerful hardware.</li>
+                <li><strong>Easy Setup:</strong> Quick server setup with minimal effort – start your game world in minutes.</li>
+                <li><strong>Custom Scripts:</strong> Use custom scripts and mods to personalize your server experience.</li>
+                <li><strong>24/7 Support:</strong> Our team is available around the clock to assist with any server-related issues.</li>
+                <li><strong>Scalability:</strong> Host a server for a small group or a large community – our hosting plans scale with you.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Our Project Section -->
+    <section id="project">
+        <div class="container">
+            <h2>Our Minetest Synthesis Project</h2>
+            <p>In addition to hosting servers, we are also working on custom scripts and tools for Minetest as part of our academic Synthesis Credit project. We’ll be sharing our scripts here, allowing the community to benefit from them and build upon them.</p>
+            <p>Feel free to explore, use, or modify the scripts that we develop. Check our GitHub repository for the latest updates!</p>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section id="cta">
+        <div class="container">
+            <h2>Get Started with Atlantis</h2>
+            <p>Ready to host your own Minetest server? Join Atlantis today and experience seamless hosting and management for your game world.</p>
+            <a href="signup.html" class="cta-button">Sign Up Now</a>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Atlantis. All rights reserved.</p>
+        </div>
     </footer>
 
 </body>
 </html>
+
