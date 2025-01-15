@@ -5,7 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Atlantis - Minetest Server Hosting</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- Fuente Google (más atractiva) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos básicos para la página */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Contenedor para centrar el contenido */
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            max-width: 1100px;
+        }
+
+        /* Header con fondo atractivo */
+        header {
+            background-color: #00b3b3;
+            color: white;
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+        }
+
+        /* Sección de "About" */
+        #about {
+            padding: 40px 0;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        #about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #00b3b3;
+        }
+
+        #about p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Sección de "Features" */
+        #features {
+            padding: 40px 0;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        #features h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #00b3b3;
+        }
+
+        #features ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #features li {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        #features li strong {
+            color: #00b3b3;
+        }
+
+        /* Botón de llamada a la acción */
+        .cta-button {
+            background-color: #008080;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: #006666;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -21,7 +131,7 @@
     <section id="about">
         <div class="container">
             <h2>About Atlantis</h2>
-            <p>Atlantis provides high-quality server hosting specifically designed for Minetest, the open-source sandbox game inspired by Minecraft. Whether you're a casual player or a server admin, our hosting solutions are tailored to meet all your needs, from smooth performance to easy-to-use management tools.</p>
+            <p>Atlantis offers fast and easy server hosting for Minetest, the open-source sandbox game inspired by Minecraft. Whether you're a player or an admin, our platform is designed to make your experience smooth and enjoyable.</p>
         </div>
     </section>
 
@@ -30,29 +140,20 @@
         <div class="container">
             <h2>Features</h2>
             <ul>
-                <li><strong>High Performance:</strong> Enjoy lag-free gameplay with optimized servers running on powerful hardware.</li>
-                <li><strong>Easy Setup:</strong> Quick server setup with minimal effort – start your game world in minutes.</li>
-                <li><strong>Custom Scripts:</strong> Use custom scripts and mods to personalize your server experience.</li>
-                <li><strong>24/7 Support:</strong> Our team is available around the clock to assist with any server-related issues.</li>
-                <li><strong>Scalability:</strong> Host a server for a small group or a large community – our hosting plans scale with you.</li>
+                <li><strong>High Performance:</strong> Smooth gameplay with powerful servers.</li>
+                <li><strong>Easy Setup:</strong> Set up your server in minutes.</li>
+                <li><strong>Custom Scripts:</strong> Personalize your server with mods and scripts.</li>
+                <li><strong>24/7 Support:</strong> Help is always available, no matter the time.</li>
+                <li><strong>Scalable Plans:</strong> Plans to fit all server sizes, from small groups to large communities.</li>
             </ul>
-        </div>
-    </section>
-
-    <!-- Our Project Section -->
-    <section id="project">
-        <div class="container">
-            <h2>Our Minetest Synthesis Project</h2>
-            <p>In addition to hosting servers, we are also working on custom scripts and tools for Minetest as part of our academic Synthesis Credit project. We’ll be sharing our scripts here, allowing the community to benefit from them and build upon them.</p>
-            <p>Feel free to explore, use, or modify the scripts that we develop. Check our GitHub repository for the latest updates!</p>
         </div>
     </section>
 
     <!-- Call to Action Section -->
     <section id="cta">
-        <div class="container">
-            <h2>Get Started with Atlantis</h2>
-            <p>Ready to host your own Minetest server? Join Atlantis today and experience seamless hosting and management for your game world.</p>
+        <div class="container" style="text-align: center;">
+            <h2>Ready to Get Started?</h2>
+            <p>Sign up today to host your own Minetest server with ease!</p>
             <a href="signup.html" class="cta-button">Sign Up Now</a>
         </div>
     </section>
