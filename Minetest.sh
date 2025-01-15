@@ -1,11 +1,11 @@
 #!/bin/bash
 # Instalar Podman
-echo "Instalando Podman..."
+echo "Actualizando los repositorios y Instalando Podman..."
 sudo apt update
 sudo apt install -y podman
 
 # Descargar la última imagen de Minetest
-echo "Descargando la última imagen de Minetest..."
+echo "Descargando la última versión de Minetest..."
 podman pull lscr.io/linuxserver/minetest:latest
 
 # Solicitar parámetros al usuario
