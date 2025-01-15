@@ -1,4 +1,4 @@
-# Minetest Synthesis Credit Scripts
+# Minetest Synthesis Credit 
 
 This repository contains the scripts developed by my colleague and me for our Synthesis Credit project on **Minetest**. 
 
