@@ -11,7 +11,7 @@ podman pull lscr.io/linuxserver/minetest:latest
 # Limipar la pantalla para dejar claro la información que se solicita más tarde
 clear
 
-# Solicitar parámetros al usuario
+# Configuración del servidor 
 read -p "Introduce el puerto del servidor (por defecto 30000): " PORT
 PORT=${PORT:-30000}  # Valor por defecto
 
