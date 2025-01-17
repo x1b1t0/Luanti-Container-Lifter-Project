@@ -97,7 +97,46 @@
             background-color: #006666;
         }
 
-        /* Footer */
+        #contact {
+            padding: 40px 0;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        #contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #00b3b3;
+        }
+
+        #contact form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #contact input, #contact textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        #contact button {
+            background-color: #008080;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        #contact button:hover {
+            background-color: #006666;
+        }
+
         footer {
             background-color: #333;
             color: white;
@@ -108,7 +147,6 @@
         footer p {
             font-size: 1rem;
         }
-
     </style>
 </head>
 <body>
@@ -140,6 +178,19 @@
         </div>
     </section>
 
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Customer Service</h2>
+            <p>If you have any questions or need support, feel free to contact us using the form below.</p>
+            <form action="submit_contact.php" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
     <section id="cta">
         <div class="container" style="text-align: center;">
             <h2>Ready to Get Started?</h2>
@@ -156,4 +207,3 @@
 
 </body>
 </html>
-
