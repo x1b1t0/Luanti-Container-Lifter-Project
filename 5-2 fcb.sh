@@ -41,7 +41,7 @@ configure_server() {
     # Crear configuración personalizada de minetest.conf
     CONFIG_PATH="./minetest.conf"
     echo "Escribiendo configuración en $CONFIG_PATH..."
-    cat <<EOL > $CONFIG_PATH
+    
 # Configuración del servidor Minetest
 port = $SERVER_PORT
 max_users = $MAX_PLAYERS
