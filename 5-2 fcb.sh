@@ -1,109 +1,67 @@
 #!/bin/bash
 
-# Función para instalar Podman y Minetest
-install_dependencies() {
-    echo "Instalando Podman y Minetest..."
-    # Instalar Podman
-    if ! command -v podman &> /dev/null; then
-        echo "Podman no está instalado. Instalándolo ahora..."
-        sudo apt update && sudo apt install -y podman
-    else
-        echo "Podman ya está instalado."
-    fi
+# Instalación de Podman
+echo "Instalando Podman..."
+sudo apt update
+sudo apt install -y podman
 
-    # Instalar Minetest
-    if ! command -v minetest &> /dev/null; then
-        echo "Minetest no está instalado. Instalándolo ahora..."
-        sudo apt update && sudo apt install -y minetest
-    else
-        echo "Minetest ya está instalado."
-    fi
-    clear
-}
+# Descargar la última versión de Minetest
+echo "Descargando la última versión de Minetest..."
+podman pull linuxserver/minetest
 
-# Función para configurar el servidor
-configure_server() {
-    echo "Configurando el servidor de Minetest..."
-    
-    # Solicitar parámetros al usuario
-    read -p "Introduce el puerto del servidor (por defecto: 30000): " SERVER_PORT
-    SERVER_PORT=${SERVER_PORT:-30000}
+# Limpiar la pantalla después de la descarga
+clear
 
-    read -p "Introduce el número máximo de jugadores (por defecto: 10): " MAX_PLAYERS
-    MAX_PLAYERS=${MAX_PLAYERS:-10}
+# Solicitar al usuario parámetros para configurar el servidor
+echo "Configuración del servidor de Minetest"
 
-    read -p "Introduce el nombre del servidor (por defecto: My Minetest Server): " SERVER_NAME
-    SERVER_NAME=${SERVER_NAME:-"My Minetest Server"}
+# Nombre del servidor
+read -p "Ingresa el nombre del servidor: " SERVER_NAME
 
-    read -p "Introduce la descripción del servidor (por defecto: Welcome to Minetest!): " SERVER_DESCRIPTION
-    SERVER_DESCRIPTION=${SERVER_DESCRIPTION:-"Welcome to Minetest!"}
+# Puerto del servidor
+read -p "Ingresa el puerto del servidor (default 30000): " SERVER_PORT
+SERVER_PORT=${SERVER_PORT:-30000}
 
-    # Crear configuración personalizada de minetest.conf
-    CONFIG_PATH="./minetest.conf"
-    echo "Escribiendo configuración en $CONFIG_PATH..."
-    
-# Configuración del servidor Minetest
-port = $SERVER_PORT
-max_users = $MAX_PLAYERS
-server_name = $SERVER_NAME
-server_description = $SERVER_DESCRIPTION
-enable_damage = true
-creative_mode = false
+# Número máximo de jugadores
+read -p "Ingresa el número máximo de jugadores (default 10): " MAX_PLAYERS
+MAX_PLAYERS=${MAX_PLAYERS:-10}
+
+# Otras configuraciones que puedas necesitar
+read -p "Ingresa la descripción del servidor (opcional): " SERVER_DESC
+
+# Ruta donde se encuentra la configuración en el contenedor
+CONFIG_PATH="/config/.minetest/main-config/minetest.conf"
+
+# Crear archivo minetest.conf con los parámetros proporcionados
+echo "Creando archivo de configuración..."
+
+# Crear el directorio de configuración
+mkdir -p "$(pwd)/config/.minetest/main-config"
+
+# Crear el archivo minetest.conf con los parámetros dados
+cat <<EOL > "$(pwd)/config/.minetest/main-config/minetest.conf"
+# Archivo de configuración de Minetest
+name = "$SERVER_NAME"
+server_announce = true
+server_description = "$SERVER_DESC"
+server_address = "0.0.0.0"
+server_port = "$SERVER_PORT"
+max_users = "$MAX_PLAYERS"
 EOL
 
-    echo "Configuración creada con éxito en $CONFIG_PATH."
-}
-
-# Función para ejecutar el servidor en un contenedor
-run_server() {
-    echo "Iniciando el servidor Minetest en un contenedor con Podman..."
-
-    # Crear directorio de configuración si no existe
-    CONFIG_DIR="./config/.minetest"
-    mkdir -p $CONFIG_DIR
-
-    # Copiar el archivo de configuración personalizado
-    cp ./minetest.conf $CONFIG_DIR/minetest.conf
-
-    # Ejecutar el contenedor con Podman
-    podman run -d --name=minetest-server \
-        -p ${SERVER_PORT}:${SERVER_PORT}/udp \
-        -v $(pwd)/config/.minetest:/config/.minetest \
-        linuxserver/minetest
-
-    echo "El servidor de Minetest se está ejecutando en el puerto $SERVER_PORT."
-    echo "Para detener el servidor, usa: podman stop minetest-server"
-    echo "Para reiniciar el servidor, usa: podman start minetest-server"
-}
-
-# Menú principal
+# Limpiar la pantalla para que esté limpia antes de iniciar el servidor
 clear
-echo "Bienvenido al configurador de servidores Minetest"
-echo "------------------------------------------------"
-echo "1. Instalar dependencias (Podman y Minetest)"
-echo "2. Configurar el servidor"
-echo "3. Iniciar el servidor"
-echo "4. Salir"
-echo "------------------------------------------------"
 
-read -p "Selecciona una opción: " OPTION
+# Ejecutar el contenedor de Minetest con los parámetros de configuración
+echo "Iniciando el servidor de Minetest..."
 
-case $OPTION in
-    1)
-        install_dependencies
-        ;;
-    2)
-        configure_server
-        ;;
-    3)
-        run_server
-        ;;
-    4)
-        echo "Saliendo..."
-        exit 0
-        ;;
-    *)
-        echo "Opción no válida. Saliendo..."
-        exit 1
-        ;;
-esac
+# Ejecutar el contenedor de Minetest con Podman
+podman run -d \
+  -v "$(pwd)/config/.minetest/main-config:/config/.minetest/main-config" \
+  -p "$SERVER_PORT:$SERVER_PORT" \
+  --name minetest_server \
+  linuxserver/minetest
+
+# Mostrar mensaje indicando que el servidor se ha iniciado
+echo "Servidor de Minetest iniciado con éxito en el puerto $SERVER_PORT."
+echo "¡Disfruta de tu servidor de Minetest!"
