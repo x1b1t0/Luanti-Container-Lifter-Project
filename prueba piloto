@@ -8,4 +8,4 @@ echo Elige el puerto del servidor
 
 read puertoServidor
 
-podman run --name=$nombreServidor -p $puertoServidor -e CLI_ARGS="--gameid devtest" minetest:latest
+podman run --name=$nombreServidor -p $puertoServidor -e CLI_ARGS="--gameid devtest" luanti:latest
