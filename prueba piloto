@@ -1,10 +1,11 @@
 #!/bin/bash
+
 echo  Elige el nombre del servidor
 
 read nombreServidor
 
-podman run --name=$nombreServidor --p $elegirPuerto -e CLI_ARGS="--gameid devtest" minetest:latest
+echo Elige el puerto del servidor
 
-echo Elige el puerto del servidor 
+read puertoServidor
 
-read elegirPuerto
+podman run --name=$nombreServidor -p $puertoServidor -e CLI_ARGS="--gameid devtest" minetest:latest
