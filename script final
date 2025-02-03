@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo  Elige el nombre del servidor
+
+read nombreServidor
+
+echo Elige el puerto del servidor: 
+
+read puertoServidor 
+
+podman run -d --name=$nombreServidor -p $puertoServidor:30000/udp -e CLI_ARGS="--gameid devtest" luanti:latest
