@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 echo "cual es la IP de tu ordenador?"
 
 read ipServidor
@@ -10,7 +12,9 @@ read nombreServidor
 
 echo Elige el puerto del servidor: 
 
-read puertoServidor 
+read puertoServidor
+
+echo Iniciando tu servidor... 
 
 podman run -d --name=$nombreServidor -p $puertoServidor:30000/udp -e CLI_ARGS="--gameid devtest" luanti:latest
 
