@@ -20,4 +20,4 @@ podman run -d --name=$nombreServidor -p $puertoServidor:30000/udp -e CLI_ARGS="-
 
 clear
 
-echo tu servidor ya esta funcionando con la IP 127.0.0.1 o bien $ipServidor y con el puerto $puertoServidor
+echo tu servidor ya esta funcionando con la IP 127.0.0.1 o bien con $ipServidor y con el puerto $puertoServidor
