@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# Función para mostrar el título "ATLANTIS"
+mostrar_titulo() {
+    clear
+    echo "----------------------------------"
+    echo "         A T L A N T I S         "
+    echo "----------------------------------"
+    echo ""
+}
+
+# Función para crear el servidor
+crear_servidor() {
+    clear
+    echo "¿Cuál es la IP de tu ordenador?"
+    read ipServidor
+
+    echo "Elige el nombre del servidor:"
+    read nombreServidor
+
+    echo "Elige el puerto del servidor:"
+    read puertoServidor
+
+    echo "Iniciando tu servidor..."
+    podman run -d --name=$nombreServidor -p $puertoServidor:30000/udp -e CLI_ARGS="--gameid devtest" luanti:latest
+
+    clear
+    echo "Tu servidor ya está funcionando con la IP 127.0.0.1 o bien con $ipServidor y con el puerto $puertoServidor"
+    sleep 3
+}
+
+# Función para mostrar el menú
+mostrar_menu() {
+    while true; do
+        mostrar_titulo
+        echo "1) Crear servidor"
+        echo "2) Salir"
+        echo -n "Seleccione una opción: "
+        read opcion
+
+        case $opcion in
+            1) crear_servidor ;;
+            2) echo "Saliendo..."; exit 0 ;;
+            *) echo "Opción inválida, intenta de nuevo." ;;
+        esac
+    done
+}
+
+# Ejecutar el menú
+mostrar_menu
