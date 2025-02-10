@@ -26,7 +26,7 @@ crear_servidor() {
 
     clear
     echo "Tu servidor ya está funcionando con la IP 127.0.0.1 o bien con $ipServidor y con el puerto $puertoServidor"
-    sleep 3
+    sleep 20
 }
 
 # Función para mostrar el menú
