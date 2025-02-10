@@ -1,4 +1,4 @@
-# Minetest Synthesis Credit 
+# Luanti Synthesis Credit 
 
 English version
 
