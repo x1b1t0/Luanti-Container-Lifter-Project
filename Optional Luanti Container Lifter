@@ -25,8 +25,8 @@ crear_servidor() {
     podman run -d --name=$nombreServidor -p $puertoServidor:30000/udp -e CLI_ARGS="--gameid devtest" luanti:latest
 
     clear
-    echo "Tu servidor ya está funcionando con la IP 127.0.0.1 o bien con $ipServidor y con el puerto $puertoServidor"
-    sleep 20
+    echo "Tu servidor ya está funcionando con la IP 127.0.0.1 o bien con $ipServidor y con el puerto $puertoServidor si no has elegido ninguno tu puerto sera el 30000"
+    sleep 15
 }
 
 # Función para mostrar el menú
