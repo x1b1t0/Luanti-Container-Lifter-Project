@@ -12,20 +12,22 @@ mostrar_titulo() {
 # Función para crear el servidor
 crear_servidor() {
     clear
-    echo "¿Cuál es la IP de tu ordenador?"
+    echo "¿Cuál es la IP de tu ordenador? (Presiona Enter para usar 127.0.0.1)"
     read ipServidor
+    ipServidor=${ipServidor:-127.0.0.1}
 
     echo "Elige el nombre del servidor:"
     read nombreServidor
 
-    echo "Elige el puerto del servidor:"
+    echo "Elige el puerto del servidor (Presiona Enter para usar 1999):"
     read puertoServidor
+    puertoServidor=${puertoServidor:-1999}
 
     echo "Iniciando tu servidor..."
-    podman run -d --name=$nombreServidor -p $puertoServidor:30000/udp -e CLI_ARGS="--gameid devtest" luanti:latest
+    podman run -d --name="$nombreServidor" -p "$puertoServidor:30000/udp" -e CLI_ARGS="--gameid devtest" luanti:latest
 
     clear
-    echo "Tu servidor ya está funcionando con la IP 127.0.0.1 o bien con $ipServidor y con el puerto $puertoServidor si no has elegido ninguno tu puerto sera el 30000"
+    echo "Tu servidor ya está funcionando en la IP $ipServidor y con el puerto $puertoServidor."
     sleep 15
 }
 
