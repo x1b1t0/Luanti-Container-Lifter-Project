@@ -1,6 +1,6 @@
 # Luanti Synthesis Credit 
 
-English version
+****English version****
 
 This repository contains the scripts developed by my colleague and me for our Synthesis Credit project on **Minetest**. 
 
@@ -31,7 +31,7 @@ If you have any questions or suggestions, feel free to reach out to us through t
 
 Thank you for checking out our project!
 
-Spanish version
+****Spanish version****
 
 Este repositorio contiene los scripts desarrollados por mi colega y por mí para nuestro proyecto Synthesis Credit en **Minetest**. 
 
