@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Start Server - Atlantis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #00b3b3;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        .cta-button {
+            background-color: #008080;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #006666;
+        }
+
+        footer {
+            margin-top: 50px;
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    nav {
+        background-color: rgba(0, 0, 0, 0.7);
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    nav ul li {
+        position: relative;
+    }
+
+    nav ul li a, .dropbtn {
+        display: inline-block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    nav ul li a:hover, .dropdown:hover .dropbtn {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.7);
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+    .dropdown-content a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+</style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Start Your Server</h1>
+        <p>Enter the server details below to initialize your Minetest server.</p>
+        <form action="server-initialized.html" method="get">
+            <div class="form-group">
+                <label for="server-name">Server Name:</label>
+                <input type="text" id="server-name" name="server-name" required>
+            </div>
+            <div class="form-group">
+                <label for="server-ip">Server IP:</label>
+                <input type="text" id="server-ip" name="server-ip" required>
+            </div>
+            <div class="form-group">
+                <label for="server-port">Server Port:</label>
+                <input type="text" id="server-port" name="server-port" required>
+            </div>
+            <button type="submit" class="cta-button">Start Server</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Atlantis. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+
+<style>
+    nav {
+        background-color: rgba(0, 0, 0, 0.7);
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    nav ul li {
+        position: relative;
+    }
+
+    nav ul li a {
+        display: inline-block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+</style>
+<nav>
+    <ul>
+        <li><a href="paginaprincipal.html">Home</a></li>
+    </ul>
+</nav>
