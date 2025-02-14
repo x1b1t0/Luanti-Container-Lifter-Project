@@ -1,0 +1,24 @@
+{
+  "name": "luanti-container-lifter-project",
+  "version": "1.0.0",
+  "description": "****English version****",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "x1b1t0",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/x1b1t0/Luanti-Container-Lifter-Project.git#main"
+  },
+  "keywords": [
+    "Luanti",
+    "Podman"
+  ],
+  "bugs": {
+    "url": "https://github.com/x1b1t0/Luanti-Container-Lifter-Project/issues"
+  },
+  "homepage": "https://github.com/x1b1t0/Luanti-Container-Lifter-Project/tree/main#readme"
+}
