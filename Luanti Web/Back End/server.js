@@ -63,5 +63,5 @@ function mostrarMenu() {
     });
 }
 
-// Ejecutar el menú
+// Ejeccuccion del menú
 mostrarMenu();
