@@ -1,159 +1,183 @@
-# Luanti Synthesis Credit 
+# Luanti-Container-Lifter-Project
 
-****English version****
+## Descripción
 
-This repository contains the scripts developed by my colleague and me for our Synthesis Credit project on **Minetest**. 
+Este proyecto de investigación tiene como objetivo facilitar la creación y gestión de servidores personalizados de Luanti a través de una interfaz web HTML. Utiliza contenedores gestionados con Podman para garantizar una implementación flexible, escalable y eficiente.
 
-We will be sharing the code and tools we've created for this project here. Feel free to explore, use, or modify the scripts as needed.
+## Características Principales
 
-## Overview
+- **Interfaz Web Sencilla**: Gestiona servidores de Luanti fácilmente a través de una interfaz web en HTML.
+- **Despliegue en Contenedores**: Utiliza Podman para el despliegue de servidores en contenedores, asegurando un entorno seguro y reproducible.
+- **Scripts Automatizados**: Scripts para automatizar la configuración y gestión de los servidores.
+- **Diseño Modular**: Facilita la personalización y el uso en diversos entornos.
+- **Uso de JavaScript**: Implementación de funcionalidades dinámicas y gestión de dependencias con Yarn y npm.
 
-Minetest is an open-source sandbox game inspired by Minecraft, and for our project, we’ve created various scripts that enhance or modify the gameplay experience. These scripts serve as a part of the Synthesis Credit project.
+## Objetivo
 
-## What’s Included
+El objetivo principal de este proyecto es democratizar la creación de servidores para Luanti, proporcionando una solución accesible y eficiente para usuarios y comunidades interesados en levantar sus propios servidores sin necesidad de conocimientos avanzados en infraestructura.
 
-- **Scripts:** Custom scripts for Minetest, written by us.
-- **Documentation:** Basic explanations and instructions for using the scripts.
-- **Web Application:** A web interface to create and manage servers.
+## Habilidades Aplicadas
 
-## Web Application
+- **Contenerización con Podman**
+- **Programación de Scripts Bash para la Automatización de Tareas**
+- **Diseño Básico de Interfaces Web en HTML**
+- **Desarrollo con JavaScript y Gestión de Dependencias con Yarn y npm**
+- **Gestión de Servidores y Administración de Entornos Virtuales**
 
-### Description
+## Requisitos
 
-Our web application allows users to create and manage servers through an interactive frontend. When users interact with the frontend and click the "Create Server" button, a server is instantiated in the backend. Users can then connect to the server and configure various parameters.
+- Python 3.x
+- [colorama](https://pypi.org/project/colorama/)
+- Nmap
+- smbclient
+- netsh (para Windows)
+- ufw (para Linux)
+- tcpdump
+- Hydra
+- Yarn
+- npm
 
-### Backend
+## Instalación
 
-The backend is responsible for handling server creation and management. It is built using [specify your backend technology, e.g., Node.js, Python Flask, etc.]. The backend listens for requests from the frontend and performs actions such as starting, stopping, and configuring servers.
-
-### Frontend
-
-The frontend is built using HTML, CSS, and JavaScript. It provides a user-friendly interface for interacting with the backend. Users can easily create servers, configure settings, and monitor the status of their servers.
-
-### How It Works
-
-1. **User Interaction**: Users interact with the frontend and click the "Create Server" button.
-2. **Backend Request**: The frontend sends a request to the backend to create a new server.
-3. **Server Creation**: The backend processes the request and starts a new server instance.
-4. **User Configuration**: Users can then connect to the server and configure various parameters through the frontend interface.
-
-## Usage
-
-To use these scripts and the web application, simply clone the repository and follow the instructions below:
-
-### Setting Up the Web Application
-
-1. **Clone the Repository**: 
+1. Clonar el repositorio:
    ```bash
    git clone https://github.com/x1b1t0/Luanti-Container-Lifter-Project.git
    cd Luanti-Container-Lifter-Project
    ```
 
-2. **Install Dependencies**: 
-   Follow the instructions in the `backend` and `frontend` directories to install the necessary dependencies.
-
-3. **Run the Backend**: 
-   Start the backend server by running the following command in the `backend` directory:
+2. Instalar dependencias de Python:
    ```bash
-   [command to start your backend, e.g., node server.js, python app.py]
+   pip install colorama
    ```
 
-4. **Run the Frontend**: 
-   Open the `index.html` file in the `frontend` directory in your web browser.
+3. Instalar dependencias de JavaScript:
+   ```bash
+   npm install
+   yarn install
+   ```
 
-### Using the Web Application
-
-- **Create a Server**: Open the web application in your browser, and click the "Create Server" button to instantiate a new server.
-- **Configure Server**: Use the provided interface to configure server settings and parameters.
-- **Manage Server**: Monitor the status of your server and perform actions such as starting, stopping, and restarting the server through the web interface.
-
-## License
-
-This project is shared under the MIT License. You are free to use, modify, and distribute the scripts as long as you include proper attribution.
-
-## Contact
-
-If you have any questions or suggestions, feel free to reach out to us through the Issues section of this repository.
-
----
-
-Thank you for checking out our project!
-
-****Spanish version****
-
-Este repositorio contiene los scripts desarrollados por mi colega y por mí para nuestro proyecto Synthesis Credit en **Minetest**. 
-
-Compartiremos el código y las herramientas que hemos creado para este proyecto aquí. Siéntase libre de explorar, utilizar o modificar los scripts según sea necesario.
-
-## Descripción general
-
-Minetest es un juego sandbox de código abierto inspirado en Minecraft y, para nuestro proyecto, hemos creado varios scripts que mejoran o modifican la experiencia de juego. Estos guiones sirven como parte del proyecto Synthesis Credit.
-
-## Qué está incluido
-
-- **Scripts:** Scripts personalizados para Minetest, escritos por nosotros.
-- **Documentación:** Explicaciones básicas e instrucciones de uso de los scripts.
-- **Aplicación Web:** Una interfaz web para crear y gestionar servidores.
-
-## Aplicación Web
-
-### Descripción
-
-Nuestra aplicación web permite a los usuarios crear y gestionar servidores a través de un frontend interactivo. Cuando los usuarios interactúan con el frontend y hacen clic en el botón "Crear Servidor", se instancia un servidor en el backend. Los usuarios pueden luego conectarse al servidor y configurar varios parámetros.
-
-### Backend
-
-El backend es responsable de manejar la creación y gestión de servidores. Está construido usando [especificar tu tecnología de backend, por ejemplo, Node.js, Python Flask, etc.]. El backend escucha solicitudes del frontend y realiza acciones como iniciar, detener y configurar servidores.
-
-### Frontend
-
-El frontend está construido usando HTML, CSS y JavaScript. Proporciona una interfaz fácil de usar para interactuar con el backend. Los usuarios pueden crear servidores fácilmente, configurar ajustes y monitorear el estado de sus servidores.
-
-### Cómo Funciona
-
-1. **Interacción del Usuario**: Los usuarios interactúan con el frontend y hacen clic en el botón "Crear Servidor".
-2. **Solicitud al Backend**: El frontend envía una solicitud al backend para crear un nuevo servidor.
-3. **Creación del Servidor**: El backend procesa la solicitud e inicia una nueva instancia de servidor.
-4. **Configuración del Usuario**: Los usuarios pueden luego conectarse al servidor y configurar varios parámetros a través de la interfaz del frontend.
+4. Asegurarse de que los siguientes programas estén instalados en su sistema:
+   - Nmap
+   - smbclient
+   - netsh (para Windows)
+   - ufw (para Linux)
+   - tcpdump
+   - Hydra
 
 ## Uso
 
-Para usar estos scripts y la aplicación web, simplemente clone el repositorio y siga las siguientes instrucciones:
+1. Ejecutar el script principal:
+   ```bash
+   python main.py
+   ```
 
-### Configuración de la Aplicación Web
+2. Seguir las instrucciones en pantalla para seleccionar la utilidad deseada.
 
-1. **Clonar el Repositorio**: 
+## Nota Importante
+
+**Luanti-Container-Lifter-Project** está destinado únicamente a fines educativos y de pruebas autorizadas. No utilice esta herramienta para actividades ilegales o sin el permiso explícito del propietario del objetivo. El uso indebido de esta herramienta es responsabilidad exclusiva del usuario.
+
+## Contribuciones
+
+¡Las contribuciones son bienvenidas! Si deseas contribuir a este proyecto, por favor realiza un fork del repositorio y envía una pull request con tus cambios.
+
+## Licencia
+
+Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
+
+## Estado del Desarrollo
+
+Este proyecto está actualmente en desarrollo. Se están añadiendo nuevas funcionalidades y mejoras regularmente. ¡Mantente al tanto de las actualizaciones!
+
+---
+
+# Luanti-Container-Lifter-Project
+
+## Description
+
+This research project aims to facilitate the creation and management of custom Luanti servers through an HTML web interface. It uses containers managed with Podman to ensure a flexible, scalable, and efficient deployment.
+
+## Main Features
+
+- **Simple HTML Web Interface**: Easily manage Luanti servers through a straightforward HTML web interface.
+- **Containerized Deployment**: Uses Podman for containerized server deployment, ensuring a secure and reproducible environment.
+- **Automated Scripts**: Scripts to automate the setup, configuration, and management of servers.
+- **Modular Design**: Facilitates customization and use in various environments.
+- **JavaScript Utilization**: Implementation of dynamic functionalities and dependency management with Yarn and npm.
+
+## Objective
+
+The primary goal of this project is to democratize the creation of Luanti servers, providing an accessible and efficient solution for users and communities interested in setting up their own servers without requiring advanced infrastructure knowledge.
+
+## Skills Applied
+
+- **Containerization with Podman**
+- **Bash Scripting for Task Automation**
+- **Basic Web Interface Design in HTML**
+- **JavaScript Development and Dependency Management with Yarn and npm**
+- **Server Management and Virtual Environment Administration**
+
+## Requirements
+
+- Python 3.x
+- [colorama](https://pypi.org/project/colorama/)
+- Nmap
+- smbclient
+- netsh (for Windows)
+- ufw (for Linux)
+- tcpdump
+- Hydra
+- Yarn
+- npm
+
+## Installation
+
+1. Clone the repository:
    ```bash
    git clone https://github.com/x1b1t0/Luanti-Container-Lifter-Project.git
    cd Luanti-Container-Lifter-Project
    ```
 
-2. **Instalar Dependencias**: 
-   Siga las instrucciones en los directorios `backend` y `frontend` para instalar las dependencias necesarias.
-
-3. **Ejecutar el Backend**: 
-   Inicie el servidor backend ejecutando el siguiente comando en el directorio `backend`:
+2. Install Python dependencies:
    ```bash
-   [comando para iniciar tu backend, por ejemplo, node server.js, python app.py]
+   pip install colorama
    ```
 
-4. **Ejecutar el Frontend**: 
-   Abra el archivo `index.html` en el directorio `frontend` en su navegador web.
+3. Install JavaScript dependencies:
+   ```bash
+   npm install
+   yarn install
+   ```
 
-### Uso de la Aplicación Web
+4. Ensure the following programs are installed on your system:
+   - Nmap
+   - smbclient
+   - netsh (for Windows)
+   - ufw (for Linux)
+   - tcpdump
+   - Hydra
 
-- **Crear un Servidor**: Abra la aplicación web en su navegador y haga clic en el botón "Crear Servidor" para instanciar un nuevo servidor.
-- **Configurar Servidor**: Use la interfaz proporcionada para configurar los ajustes y parámetros del servidor.
-- **Gestionar Servidor**: Monitoree el estado de su servidor y realice acciones como iniciar, detener y reiniciar el servidor a través de la interfaz web.
+## Usage
 
-## Licencia
+1. Run the main script:
+   ```bash
+   python main.py
+   ```
 
-Este proyecto se comparte bajo la licencia MIT. Eres libre de utilizar, modificar y distribuir los scripts siempre que incluyas la atribución adecuada.
+2. Follow the on-screen instructions to select the desired utility.
 
-## Contacto
+## Important Note
 
-Si tiene alguna pregunta o sugerencia, no dude en comunicarse con nosotros a través de la sección Problemas de este repositorio.
+**Luanti-Container-Lifter-Project** is intended for educational purposes and authorized testing only. Do not use this tool for illegal activities or without explicit permission from the target owner. The misuse of this tool is solely the user's responsibility.
 
----
+## Contributing
 
-¡Gracias por ver nuestro proyecto!
+Contributions are welcome! If you wish to contribute to this project, please fork the repository and submit a pull request with your changes.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Development Status
+
+This project is currently under development. New features and improvements are being added regularly. Stay tuned for updates!
