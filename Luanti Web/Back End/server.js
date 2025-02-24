@@ -13,7 +13,39 @@ function mostrarTitulo() {
     console.log('----------------------------------');
     console.log('');
 }
+function instalarDependencias() {
+    console.log('Instalando dependencias necesarias...');
+    exec('sudo apt-get update && sudo apt-get install -y nodejs podman', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error al instalar dependencias: ${error.message}`);
+            return;
+        }
+        if (stderr) {
+            console.error(`stderr: ${stderr}`);
+            return;
+        }
+        console.log('Dependencias instaladas correctamente.');
+        descargarImagenLuanti();
+    });
+}
 
+function descargarImagenLuanti() {
+    console.log('Descargando imagen de Luanti...');
+    exec('podman pull luanti:latest', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error al descargar la imagen de Luanti: ${error.message}`);
+            return;
+        }
+        if (stderr) {
+            console.error(`stderr: ${stderr}`);
+            return;
+        }
+        console.log('Imagen de Luanti descargada correctamente.');
+        mostrarMenu();
+    });
+}
+
+instalarDependencias();
 function crearServidor() {
     console.clear();
     rl.question('¿Cuál es la IP de tu ordenador? (Presiona Enter para usar 127.0.0.1): ', (ipServidor) => {
