@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "****English version****",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/x1b1t0/Luanti-Container-Lifter-Project/issues"
   },
-  "homepage": "https://github.com/x1b1t0/Luanti-Container-Lifter-Project/tree/main#readme"
+  "homepage": "https://github.com/x1b1t0/Luanti-Container-Lifter-Project/tree/main#readme",
+  "dependencies": {
+    "express": "^4.21.2",
+    "mongodb": "^6.13.1"
+  }
 }

@@ -12,9 +12,7 @@ mostrar_titulo() {
 # Función para crear el servidor
 crear_servidor() {
     clear
-    echo "¿Cuál es la IP de tu ordenador? (Presiona Enter para usar 127.0.0.1)"
-    read ipServidor
-    ipServidor=${ipServidor:-127.0.0.1}
+    ipServidor="127.0.0.1"
 
     echo "Elige el nombre del servidor:"
     read nombreServidor
@@ -31,18 +29,30 @@ crear_servidor() {
     sleep 15
 }
 
+# Función para listar los contenedores
+listar_contenedores() {
+    clear
+    echo "Contenedores en ejecución:"
+    podman ps --format "table {{.Names}}\t{{.Ports}}"
+    echo ""
+    echo "Presiona Enter para continuar..."
+    read
+}
+
 # Función para mostrar el menú
 mostrar_menu() {
     while true; do
         mostrar_titulo
         echo "1) Crear servidor"
-        echo "2) Salir"
+        echo "2) Listar contenedores"
+        echo "3) Salir"
         echo -n "Seleccione una opción: "
         read opcion
 
         case $opcion in
             1) crear_servidor ;;
-            2) echo "Saliendo..."; exit 0 ;;
+            2) listar_contenedores ;;
+            3) echo "Saliendo..."; exit 0 ;;
             *) echo "Opción inválida, intenta de nuevo." ;;
         esac
     done
