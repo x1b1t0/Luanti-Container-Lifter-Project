@@ -1,8 +1,8 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = escapeshellarg($_POST['name']);
-    $playernumbers = escapeshellarg($_POST['playernumbers']);
-    $creativemode = escapeshellarg($_POST['creativemode']);
+    $server_name = escapeshellarg($_POST['name']);
+    $max_users = escapeshellarg($_POST['players']);
+    $creative_mode = escapeshellarg($_POST['creativemode']);
     $enable_damage = escapeshellarg($_POST['pvp']);
 
     //Ejecuccion de el script de bash
