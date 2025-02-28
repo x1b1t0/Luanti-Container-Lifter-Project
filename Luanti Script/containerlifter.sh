@@ -2,7 +2,6 @@
 
 # Función para mostrar el título "ATLANTIS"
 mostrar_titulo() {
-    clear
     echo "----------------------------------"
     echo "         A T L A N T I S         "
     echo "----------------------------------"
