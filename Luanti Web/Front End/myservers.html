@@ -3,36 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Servers</title>
-    <link rel="stylesheet" href="myservers.css">
-    <script defer src="myservers.js"></script>
+    <title>Server List</title>
 </head>
 <body>
     <header>
-        <h1>My Servers</h1>
+        <h1>Server List</h1>
     </header>
     <main>
-        <section id="server-form">
-            <h2>Add Server</h2>
-            <form id="add-server-form">
-                <label for="server-name">Server Name:</label>
-                <input type="text" id="server-name" name="server-name" required>
-                
-                <label for="server-ip">Server IP:</label>
-                <input type="text" id="server-ip" name="server-ip" required>
-                
-                <button type="submit">Add Server</button>
-            </form>
-        </section>
         <section id="server-list">
-            <h2>Server List</h2>
+            <h2>Available Servers</h2>
             <ul id="servers">
-                <!-- Servers will be added here dynamically -->
+                <!-- Server list will be populated here -->
             </ul>
         </section>
     </main>
     <footer>
         <p>&copy; 2025 Atlantis</p>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const serverList = document.getElementById('servers');
+
+            // Example server data
+            const servers = [
+                { name: 'Server 1', ip: '192.168.1.1' },
+                { name: 'Server 2', ip: '192.168.1.2' },
+                { name: 'Server 3', ip: '192.168.1.3' }
+            ];
+
+            servers.forEach(server => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${server.name} (${server.ip})`;
+                serverList.appendChild(listItem);
+            });
+        });
+
+    </script>
+    
+    <nav>
+        <ul>
+            <li><a href="paginaprincipal.html">Home</a></li>
+            <li><a href="startserver.html">Start Server</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="myservers.html">My Servers</a></li>
+        </ul>
+      </nav>
+      
 </body>
 </html>
