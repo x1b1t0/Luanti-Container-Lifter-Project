@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Este proyecto de investigación tiene como objetivo facilitar la creación y gestión de servidores personalizados de Luanti a través de una interfaz web HTML. Utiliza contenedores gestionados con Podman para garantizar una implementación flexible, escalable y eficiente.
+Este proyecto de investigación tiene como objetivo facilitar la creación y gestión de servidores personalizados de Luanti a través de una interfaz web HTML. Utiliza contenedores gestionados con Podman para asegurar un entorno seguro y reproducible.
 
 ## Características Principales
 
@@ -10,72 +10,60 @@ Este proyecto de investigación tiene como objetivo facilitar la creación y ges
 - **Despliegue en Contenedores**: Utiliza Podman para el despliegue de servidores en contenedores, asegurando un entorno seguro y reproducible.
 - **Scripts Automatizados**: Scripts para automatizar la configuración y gestión de los servidores.
 - **Diseño Modular**: Facilita la personalización y el uso en diversos entornos.
-- **Uso de JavaScript**: Implementación de funcionalidades dinámicas y gestión de dependencias con Yarn y npm.
 
 ## Objetivo
 
-El objetivo principal de este proyecto es democratizar la creación de servidores para Luanti, proporcionando una solución accesible y eficiente para usuarios y comunidades interesados en levantar sus propios servidores sin necesidad de conocimientos avanzados en infraestructura.
+El objetivo principal de este proyecto es democratizar la creación de servidores para Luanti, proporcionando una solución accesible y eficiente para usuarios y comunidades interesados en levantar sus propios servidores.
 
 ## Habilidades Aplicadas
 
 - **Contenerización con Podman**
 - **Programación de Scripts Bash para la Automatización de Tareas**
 - **Diseño Básico de Interfaces Web en HTML**
-- **Desarrollo con JavaScript y Gestión de Dependencias con Yarn y npm**
 - **Gestión de Servidores y Administración de Entornos Virtuales**
 
 ## Requisitos
 
 - Python 3.x
-- [colorama](https://pypi.org/project/colorama/)
-- Nmap
-- smbclient
-- netsh (para Windows)
-- ufw (para Linux)
-- tcpdump
-- Hydra
-- Yarn
-- npm
+- Podman
 
 ## Instalación
 
 1. Clonar el repositorio:
-   ```bash
-   git clone https://github.com/x1b1t0/Luanti-Container-Lifter-Project.git
-   cd Luanti-Container-Lifter-Project
-   ```
+    ```bash
+    git clone https://github.com/x1b1t0/Luanti-Container-Lifter-Project.git
+    cd Luanti-Container-Lifter-Project
+    ```
 
-2. Instalar dependencias de Python:
-   ```bash
-   pip install colorama
-   ```
+2. Instalar dependencias de Python (si es necesario):
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-3. Instalar dependencias de JavaScript:
-   ```bash
-   npm install
-   yarn install
-   ```
-
-4. Asegurarse de que los siguientes programas estén instalados en su sistema:
-   - Nmap
-   - smbclient
-   - netsh (para Windows)
-   - ufw (para Linux)
-   - tcpdump
-   - Hydra
+3. Asegurarse de que Podman esté instalado en su sistema.
 
 ## Uso
 
-1. Ejecutar el script principal:
-   ```bash
-   python main.py
-   ```
+1. Construir la imagen del contenedor:
+    ```bash
+    podman build -t luanti-container-lifter .
+    ```
 
-2. Seguir las instrucciones en pantalla para seleccionar la utilidad deseada.
+2. Ejecutar el contenedor:
+    ```bash
+    podman run -d -p 8000:8000 luanti-container-lifter
+    ```
+
+3. Ejecutar el script principal:
+    ```bash
+    podman exec -it <container_id> python main.py <server_name> <max_users> <creative_mode> <enable_damage>
+    ```
+
+4. Seguir las instrucciones en pantalla para seleccionar la utilidad deseada.
 
 ## Nota Importante
 
-**Luanti-Container-Lifter-Project** está destinado únicamente a fines educativos y de pruebas autorizadas. No utilice esta herramienta para actividades ilegales o sin el permiso explícito del propietario del objetivo. El uso indebido de esta herramienta es responsabilidad exclusiva del usuario.
+**Luanti-Container-Lifter-Project** está destinado únicamente a fines educativos y de pruebas autorizadas. No utilice esta herramienta para actividades ilegales o sin el permiso explícito del propietario del objetivo.
 
 ## Contribuciones
 
@@ -95,7 +83,7 @@ Este proyecto está actualmente en desarrollo. Se están añadiendo nuevas funci
 
 ## Description
 
-This research project aims to facilitate the creation and management of custom Luanti servers through an HTML web interface. It uses containers managed with Podman to ensure a flexible, scalable, and efficient deployment.
+This research project aims to facilitate the creation and management of custom Luanti servers through an HTML web interface. It uses containers managed with Podman to ensure a flexible, scalable, and reproducible environment.
 
 ## Main Features
 
@@ -103,72 +91,60 @@ This research project aims to facilitate the creation and management of custom L
 - **Containerized Deployment**: Uses Podman for containerized server deployment, ensuring a secure and reproducible environment.
 - **Automated Scripts**: Scripts to automate the setup, configuration, and management of servers.
 - **Modular Design**: Facilitates customization and use in various environments.
-- **JavaScript Utilization**: Implementation of dynamic functionalities and dependency management with Yarn and npm.
 
 ## Objective
 
-The primary goal of this project is to democratize the creation of Luanti servers, providing an accessible and efficient solution for users and communities interested in setting up their own servers without requiring advanced infrastructure knowledge.
+The primary goal of this project is to democratize the creation of Luanti servers, providing an accessible and efficient solution for users and communities interested in setting up their own servers.
 
 ## Skills Applied
 
 - **Containerization with Podman**
 - **Bash Scripting for Task Automation**
 - **Basic Web Interface Design in HTML**
-- **JavaScript Development and Dependency Management with Yarn and npm**
 - **Server Management and Virtual Environment Administration**
 
 ## Requirements
 
 - Python 3.x
-- [colorama](https://pypi.org/project/colorama/)
-- Nmap
-- smbclient
-- netsh (for Windows)
-- ufw (for Linux)
-- tcpdump
-- Hydra
-- Yarn
-- npm
+- Podman
 
 ## Installation
 
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/x1b1t0/Luanti-Container-Lifter-Project.git
-   cd Luanti-Container-Lifter-Project
-   ```
+    ```bash
+    git clone https://github.com/x1b1t0/Luanti-Container-Lifter-Project.git
+    cd Luanti-Container-Lifter-Project
+    ```
 
-2. Install Python dependencies:
-   ```bash
-   pip install colorama
-   ```
+2. Install Python dependencies (if necessary):
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-3. Install JavaScript dependencies:
-   ```bash
-   npm install
-   yarn install
-   ```
-
-4. Ensure the following programs are installed on your system:
-   - Nmap
-   - smbclient
-   - netsh (for Windows)
-   - ufw (for Linux)
-   - tcpdump
-   - Hydra
+3. Ensure Podman is installed on your system.
 
 ## Usage
 
-1. Run the main script:
-   ```bash
-   python main.py
-   ```
+1. Build the container image:
+    ```bash
+    podman build -t luanti-container-lifter .
+    ```
 
-2. Follow the on-screen instructions to select the desired utility.
+2. Run the container:
+    ```bash
+    podman run -d -p 8000:8000 luanti-container-lifter
+    ```
+
+3. Run the main script:
+    ```bash
+    podman exec -it <container_id> python main.py <server_name> <max_users> <creative_mode> <enable_damage>
+    ```
+
+4. Follow the on-screen instructions to select the desired utility.
 
 ## Important Note
 
-**Luanti-Container-Lifter-Project** is intended for educational purposes and authorized testing only. Do not use this tool for illegal activities or without explicit permission from the target owner. The misuse of this tool is solely the user's responsibility.
+**Luanti-Container-Lifter-Project** is intended for educational purposes and authorized testing only. Do not use this tool for illegal activities or without explicit permission from the target owner.
 
 ## Contributing
 
@@ -177,6 +153,10 @@ Contributions are welcome! If you wish to contribute to this project, please for
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Development Status
+
+This project is currently under development. New features and improvements are being added regularly. Stay tuned for updates!
 
 ## Development Status
 
