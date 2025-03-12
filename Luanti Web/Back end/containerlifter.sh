@@ -32,7 +32,7 @@ crear_servidor() {
     local nombre_servidor="$1"
     local max_users="$2"
     
-    mostrar_titulo
+    
     local puerto_servidor
     puerto_servidor=$(obtener_puerto)
 
