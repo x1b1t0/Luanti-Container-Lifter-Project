@@ -41,11 +41,6 @@ crear_servidor() {
     NOMBRE_USUARIO=${NOMBRE_USUARIO:-"admin"}
     NOMBRE_SERVIDOR=${NOMBRE_SERVIDOR:-"Atlantis-Server"}
     
-    if [ -z "$NOMBRE_SERVIDOR" ]; then
-        printf "❌ Error: El nombre del servidor no puede estar vacío.\n" >&2
-        return 1
-    fi
-
     local puerto_servidor
     puerto_servidor=$(obtener_puerto)
 
@@ -79,11 +74,6 @@ crear_servidor() {
 eliminar_servidor() {
     mostrar_titulo
 
-    if [ -z "$NOMBRE_SERVIDOR" ]; then
-        printf "❌ Error: Debes ingresar un nombre de servidor.\n"
-        return 1
-    fi
-
     podman stop "$NOMBRE_SERVIDOR" && podman rm "$NOMBRE_SERVIDOR" && printf "🗑️  Servidor eliminado!\n"
     rm -rf "./$NOMBRE_SERVIDOR-config"
 }
@@ -92,22 +82,12 @@ eliminar_servidor() {
 encender_servidor() {
     mostrar_titulo
 
-    if ! podman ps -a --format "{{.Names}}" | grep -q "^$NOMBRE_SERVIDOR$"; then
-        printf "⚠️  El servidor '%s' no existe.\n" "$NOMBRE_SERVIDOR"
-        return 1
-    fi
-
     podman start "$NOMBRE_SERVIDOR" && printf "✅ Servidor encendido!\n"
 }
 
 # Función para apagar un servidor
 parar_servidor() {
     mostrar_titulo
-
-    if ! podman ps --format "{{.Names}}" | grep -q "^$NOMBRE_SERVIDOR$"; then
-        printf "⚠️  El servidor '%s' no está en ejecución.\n" "$NOMBRE_SERVIDOR"
-        return 1
-    fi
 
     podman stop "$NOMBRE_SERVIDOR" && printf "🛑 Servidor apagado!\n"
 }
@@ -124,6 +104,3 @@ case "$1" in
         exit 1
     ;;
 esac
-
-
-

@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Start Server - Atlantis</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
@@ -12,55 +11,31 @@
             background-color: #f2f2f2;
             margin: 0;
             padding: 0;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
         }
 
         .container {
-            margin-top: 50px;
             padding: 20px;
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            display: inline-block;
             width: 80%;
-            max-width: 600px;
+            max-width: 400px;
+            text-align: center;
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: #00b3b3;
         }
 
         p {
-            font-size: 1.2rem;
-            color: #555;
-        }
-
-        .cta-button {
-            background-color: #008080;
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            border-radius: 5px;
-            display: inline-block;
-            margin-top: 20px;
-            cursor: pointer;
-        }
-
-        .cta-button:hover {
-            background-color: #006666;
-        }
-
-        footer {
-            margin-top: 50px;
-            background-color: #333;
-            color: white;
-            padding: 20px 0;
-        }
-
-        footer p {
             font-size: 1rem;
+            color: #555;
         }
 
         .form-group {
@@ -74,17 +49,41 @@
             color: #333;
         }
 
-        .form-group input {
+        .form-group input, .form-group select {
             width: 100%;
             padding: 10px;
             font-size: 1rem;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+
+        .radio-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .cta-button {
+            background-color: #008080;
+            color: white;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 1rem;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+            cursor: pointer;
+            width: 100%;
+            border: none;
+        }
+
+        .cta-button:hover {
+            background-color: #006666;
+        }
     </style>
 </head>
 <body>
-
     <div class="container">
         <h1>Start Your Server</h1>
         <p>Enter the server details below to initialize your Minetest server.</p>
@@ -95,20 +94,20 @@
             </div>
             <div class="form-group">
                 <label for="max_users">Max Users:</label>
-                <input type="number" id="max_users" name="max_users" required>
+                <input type="number" id="max_users" name="max_users" value="10" required>
             </div>
             <div class="form-group">
-                <label for="creative_mode">Creative Mode:</label>
-                <div>
+                <label>Creative Mode:</label>
+                <div class="radio-group">
                     <input type="radio" id="creative_mode_yes" name="creative_mode" value="yes" required>
                     <label for="creative_mode_yes">Yes</label>
                     <input type="radio" id="creative_mode_no" name="creative_mode" value="no" required>
                     <label for="creative_mode_no">No</label>
                 </div>
             </div>
-            <div class="form-group"></div>
-                <label for="enable_damage">Enable Damage:</label>
-                <div>
+            <div class="form-group">
+                <label>Enable Damage:</label>
+                <div class="radio-group">
                     <input type="radio" id="enable_damage_yes" name="enable_damage" value="yes" required>
                     <label for="enable_damage_yes">Yes</label>
                     <input type="radio" id="enable_damage_no" name="enable_damage" value="no" required>
@@ -118,48 +117,14 @@
             <button type="submit" class="cta-button">Start Server</button>
         </form>
     </div>
-
-    <footer>
-        <p>&copy; 2025 Atlantis. All rights reserved.</p>
-    </footer>
-
     <nav>
-        <ul>
-            <li><a href="paginaprincipal.html">Home</a></li>
-            <li><a href="startserver.html">Start Server</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="myservers.html">My Servers</a></li>
-            <li><a href="login.html">Login</a></li>
-
+        <ul style="list-style: none; padding: 0; display: flex; gap: 15px; justify-content: center; margin-top: 20px;"></ul>
+            <li><a href="paginaprincipal.html" style="text-decoration: none; color: #008080;">Home</a></li>
+            <li><a href="startserver.html" style="text-decoration: none; color: #008080;">Start Server</a></li>
+            <li><a href="contact.html" style="text-decoration: none; color: #008080;">Contact</a></li>
+            <li><a href="myservers.html" style="text-decoration: none; color: #008080;">My Servers</a></li>
+            <li><a href="login.html" style="text-decoration: none; color: #008080;">Login</a></li>
         </ul>
-      </nav>
-    <style>
-        nav {
-            margin-top: 20px;
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        nav ul li {
-            display: inline;
-            margin-right: 10px;
-        }
-
-        nav ul li a {
-            background-color: #008080;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            font-size: 1rem;
-            border-radius: 5px;
-        }
-
-        nav ul li a:hover {
-            background-color: #006666;
-        }
-    </style>
+    </nav>
 </body>
 </html>
