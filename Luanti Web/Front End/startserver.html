@@ -95,15 +95,25 @@
             </div>
             <div class="form-group">
                 <label for="max_users">Max Users:</label>
-                <input type="text" id="max_users" name="max_users" required>
+                <input type="number" id="max_users" name="max_users" required>
             </div>
             <div class="form-group">
                 <label for="creative_mode">Creative Mode:</label>
-                <input type="text" id="creative_mode" name="creative_mode" required>
+                <div>
+                    <input type="radio" id="creative_mode_yes" name="creative_mode" value="yes" required>
+                    <label for="creative_mode_yes">Yes</label>
+                    <input type="radio" id="creative_mode_no" name="creative_mode" value="no" required>
+                    <label for="creative_mode_no">No</label>
+                </div>
             </div>
-            <div class="form-group">
+            <div class="form-group"></div>
                 <label for="enable_damage">Enable Damage:</label>
-                <input type="text" id="enable_damage" name="enable_damage" required>
+                <div>
+                    <input type="radio" id="enable_damage_yes" name="enable_damage" value="yes" required>
+                    <label for="enable_damage_yes">Yes</label>
+                    <input type="radio" id="enable_damage_no" name="enable_damage" value="no" required>
+                    <label for="enable_damage_no">No</label>
+                </div>
             </div>
             <button type="submit" class="cta-button">Start Server</button>
         </form>
