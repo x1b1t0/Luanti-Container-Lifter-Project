@@ -9,4 +9,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $command = "bash /var/www/html/Backend/containerlifter.sh $server_name $max_users $creative_mode $enable_damage";
     $output = shell_exec($command);    
 }
-?> 
+?>
