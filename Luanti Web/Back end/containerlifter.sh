@@ -24,7 +24,7 @@ crear_configuracion() {
     printf "enable_damage = false\n" >> "$config_file"
     printf "server_description = Atlantis Server\n" >> "$config_file"
 
-    printf "✅ Configuración creada en %s\n" "$config_file"
+    #printf "✅ Configuración creada en %s\n" "$config_file"
 }
 
 # Función para crear un servidor
@@ -36,10 +36,10 @@ crear_servidor() {
     local puerto_servidor
     puerto_servidor=$(obtener_puerto)
 
-    printf "🔧 Configurando servidor...\n"
+    #printf "🔧 Configurando servidor...\n"
     crear_configuracion "$nombre_servidor" "$max_users"
 
-    printf "🚀 Iniciando servidor '%s' en puerto %d...\n" "$nombre_servidor" "$puerto_servidor"
+    #printf "🚀 Iniciando servidor '%s' en puerto %d...\n" "$nombre_servidor" "$puerto_servidor"
     mkdir -p "./$nombre_servidor-config"
 
     podman run -d --name="$nombre_servidor" -p "$puerto_servidor:30000/udp" \
@@ -48,13 +48,13 @@ crear_servidor() {
         docker.io/linuxserver/luanti:latest
 
     if [ $? -ne 0 ]; then
-        printf "❌ Error al iniciar el servidor.\n" >&2
-        return 1
+        #printf "❌ Error al iniciar el servidor.\n" >&2
+      return 1
     fi
 
     sleep 3
     podman exec "$nombre_servidor" mkdir -p /config/.minetest/main-config
-    printf "✅ Servidor '%s' funcionando en puerto %d!\n" "$nombre_servidor" "$puerto_servidor"
+    #printf "✅ Servidor '%s' funcionando en puerto %d!\n" "$nombre_servidor" "$puerto_servidor"
 }
 
 crear_servidor "$1" "$2"
