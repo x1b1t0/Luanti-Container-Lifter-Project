@@ -10,7 +10,7 @@ mostrar_titulo() {
 
 # Función para obtener un puerto único
 obtener_puerto() {
-    local puerto_base=3001
+    local puerto_base=30001
     local puerto_actual=$(cat "$PUERTO_ARCHIVO" 2>/dev/null || echo "$puerto_base")
 
     echo $((puerto_actual + 1)) > "$PUERTO_ARCHIVO"
