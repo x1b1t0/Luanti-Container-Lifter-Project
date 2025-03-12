@@ -3,11 +3,6 @@
 # Archivo para registrar el último puerto usado
 PUERTO_ARCHIVO="puerto_actual.txt"
 
-# Función para mostrar el título "ATLANTIS"
-mostrar_titulo() {
-    printf "\n         🚀 A T L A N T I S 🚀         \n\n"
-}
-
 # Función para obtener un puerto único
 obtener_puerto() {
     local puerto_base=30001
@@ -28,7 +23,6 @@ crear_configuracion() {
     printf "creative_mode = true\n" >> "$config_file"
     printf "enable_damage = false\n" >> "$config_file"
     printf "server_description = Atlantis Server\n" >> "$config_file"
-    printf "noclip = true\n" >> "$config_file"
 
     printf "✅ Configuración creada en %s\n" "$config_file"
 }
@@ -49,7 +43,7 @@ crear_servidor() {
     mkdir -p "./$nombre_servidor-config"
 
     podman run -d --name="$nombre_servidor" -p "$puerto_servidor:30000/udp" \
-        -e MINETEST_WORLDNAME="$nombre_servidor" \
+        -e LUANTI_WORLDNAME="$nombre_servidor" \
         -v "$(pwd)/volumenes/$nombre_servidor-config:/config/.minetest" \
         docker.io/linuxserver/luanti:latest
 
