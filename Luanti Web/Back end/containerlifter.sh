@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Archivo para registrar el último puerto usado
+#  se crea un archivo para registrar el último puerto usado para después usar el siguiente
 PUERTO_ARCHIVO="puerto_actual.txt"
 
-# Función para obtener un puerto único
+# Función para obtener el puerto
 obtener_puerto() {
     local puerto_base=30001
     local puerto_actual=$(cat "$PUERTO_ARCHIVO" 2>/dev/null || echo "$puerto_base")
@@ -11,7 +11,7 @@ obtener_puerto() {
     printf "%d" "$((puerto_actual + 1))"
 }
 
-# Función para crear el archivo de configuración del servidor
+# Función para crear el archivo de configuración del servidor con los volumenetes
 crear_configuracion() {
     local nombre_servidor="$1"
     local max_users="$2"
