@@ -1,62 +1,81 @@
 #!/bin/bash
 
-#  se crea un archivo para registrar el último puerto usado para después usar el siguiente
-sudo touch puerto_actual.txt
-PUERTO_ARCHIVO="puerto_actual.txt"
+PUERTO_ARCHIVO="/home/scriptluanti/puerto_actual.txt"
+VOLUMEN_BASE="/home/scriptluanti/volumenes"
+
+# Asegurar que la carpeta de volúmenes existe y cambiar propietario
+if [ ! -d "$VOLUMEN_BASE" ]; then
+    sudo mkdir -p "$VOLUMEN_BASE"
+fi
+sudo chown -R www-data:www-data "$VOLUMEN_BASE"
+
+# Se crea el archivo de puerto si no existe y se le asignan permisos
+if [ ! -f "$PUERTO_ARCHIVO" ]; then
+    sudo touch "$PUERTO_ARCHIVO"
+    sudo chown www-data:www-data "$PUERTO_ARCHIVO"
+fi
 
 # Función para obtener el puerto
 obtener_puerto() {
     local puerto_base=30001
     local puerto_actual=$(cat "$PUERTO_ARCHIVO" 2>/dev/null || echo "$puerto_base")
-    echo $((puerto_actual + 1)) > "$PUERTO_ARCHIVO"
+    echo $((puerto_actual + 1)) | sudo tee "$PUERTO_ARCHIVO" > /dev/null
     printf "%d" "$((puerto_actual + 1))"
 }
 
-# Función para crear el archivo de configuración del servidor con los volumenetes
+# Función para crear el archivo de configuración del servidor
 crear_configuracion() {
     local nombre_servidor="$1"
     local max_users="$2"
-    
-    sudo mkdir -p "$(pwd)/volumenes/$nombre_servidor-config/main-config/"
-    local config_file="$(pwd)/volumenes/$nombre_servidor-config/main-config/minetest.conf"
+    local config_dir="$VOLUMEN_BASE/$nombre_servidor-config/main-config"
 
-    printf "max_users = %s\n" "$max_users" > "$config_file"
-    printf "creative_mode = true\n" >> "$config_file"
-    printf "enable_damage = false\n" >> "$config_file"
-    printf "server_description = Atlantis Server\n" >> "$config_file"
+    sudo mkdir -p "$config_dir"
 
-    #printf "✅ Configuración creada en %s\n" "$config_file"
+    local config_file="$config_dir/minetest.conf"
+
+    {
+        echo "max_users = $max_users"
+        echo "creative_mode = true"
+        echo "enable_damage = false"
+        echo "server_description = Atlantis Server"
+    } | sudo tee "$config_file" > /dev/null
+
+    sudo chown -R www-data:www-data "$config_dir"
 }
 
 # Función para crear un servidor
 crear_servidor() {
     local nombre_servidor="$1"
     local max_users="$2"
-    
-    
+
     local puerto_servidor
     puerto_servidor=$(obtener_puerto)
 
-    #printf "🔧 Configurando servidor...\n"
     crear_configuracion "$nombre_servidor" "$max_users"
 
-    #printf "🚀 Iniciando servidor '%s' en puerto %d...\n" "$nombre_servidor" "$puerto_servidor"
-    sudo mkdir -p "./$nombre_servidor-config"
+    local volumen_dir="$VOLUMEN_BASE/$nombre_servidor-config"
+
+    sudo mkdir -p "$volumen_dir"
+    sudo chown -R www-data:www-data "$volumen_dir"
 
     podman run -d --name="$nombre_servidor" -p "$puerto_servidor:30000/udp" \
         -e LUANTI_WORLDNAME="$nombre_servidor" \
-        -v "$(pwd)/volumenes/$nombre_servidor-config:/config/.minetest" \
-        podman pull docker.io/linuxserver/luanti:latest
+        -v "$volumen_dir:/config/.minetest" \
         docker.io/linuxserver/luanti:latest
 
     if [ $? -ne 0 ]; then
-        #printf "❌ Error al iniciar el servidor.\n" >&2
-      return 1
+        echo "❌ Error al iniciar el servidor." >&2
+        return 1
     fi
 
     sleep 3
-    podman exec "$nombre_servidor" | sudo mkdir -p /config/.minetest/main-config
-    #printf "✅ Servidor '%s' funcionando en puerto %d!\n" "$nombre_servidor" "$puerto_servidor"
+    podman exec "$nombre_servidor" mkdir -p /config/.minetest/main-config
+
+    sudo chown -R www-data:www-data "$volumen_dir"
+
+    echo "✅ Servidor '$nombre_servidor' funcionando en puerto $puerto_servidor!"
 }
 
 crear_servidor "$1" "$2"
+
+
