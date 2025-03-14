@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #  se crea un archivo para registrar el último puerto usado para después usar el siguiente
+sudo touch puerto_actual.txt
 PUERTO_ARCHIVO="puerto_actual.txt"
 
 # Función para obtener el puerto
@@ -16,7 +17,7 @@ crear_configuracion() {
     local nombre_servidor="$1"
     local max_users="$2"
     
-    mkdir -p "$(pwd)/volumenes/$nombre_servidor-config/main-config/"
+    sudo mkdir -p "$(pwd)/volumenes/$nombre_servidor-config/main-config/"
     local config_file="$(pwd)/volumenes/$nombre_servidor-config/main-config/minetest.conf"
 
     printf "max_users = %s\n" "$max_users" > "$config_file"
@@ -40,11 +41,12 @@ crear_servidor() {
     crear_configuracion "$nombre_servidor" "$max_users"
 
     #printf "🚀 Iniciando servidor '%s' en puerto %d...\n" "$nombre_servidor" "$puerto_servidor"
-    mkdir -p "./$nombre_servidor-config"
+    sudo mkdir -p "./$nombre_servidor-config"
 
     podman run -d --name="$nombre_servidor" -p "$puerto_servidor:30000/udp" \
         -e LUANTI_WORLDNAME="$nombre_servidor" \
         -v "$(pwd)/volumenes/$nombre_servidor-config:/config/.minetest" \
+        podman pull docker.io/linuxserver/luanti:latest
         docker.io/linuxserver/luanti:latest
 
     if [ $? -ne 0 ]; then
@@ -53,7 +55,7 @@ crear_servidor() {
     fi
 
     sleep 3
-    podman exec "$nombre_servidor" mkdir -p /config/.minetest/main-config
+    podman exec "$nombre_servidor" | sudo mkdir -p /config/.minetest/main-config
     #printf "✅ Servidor '%s' funcionando en puerto %d!\n" "$nombre_servidor" "$puerto_servidor"
 }
 
