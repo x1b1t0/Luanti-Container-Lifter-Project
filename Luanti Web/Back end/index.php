@@ -30,32 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    echo "ivan y victor mandan";
 }
 ?>
-  GNU nano 7.2                                                                                                                                                                       index.php                                                                                                                                                                                 
-<?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    error_log("Recuperando datos del formulario...");
-
-    // Sanitizar y validar entrada
-    $server_name = escapeshellarg($_POST['server_name']);
-    $max_users = intval($_POST['max_users']);
-    $creative_mode = ($_POST['creative_mode'] === "yes") ? "true" : "false";
-    $enable_damage = ($_POST['enable_damage'] === "yes") ? "true" : "false";
-
-    // Validar datos esenciales
-    if (empty($server_name) || $max_users <= 0) {
-        die("Error: Parámetros inválidos.");
-    }
-
-    error_log("Ejecutando el script Bash...");
-
-    // Ejecutar script Bash con parámetros
-     $command = "echo 'usuario' | sudo -S /bin/bash /home/scriptluanti/containerlifter.sh $server_name $max_users $creative_mode $enable_damage 2>&1";
-     $output = shell_exec($command);
-
-    // Mostrar salida
-    echo nl2br(htmlspecialchars($output));
-}
-?>
 
 
 
