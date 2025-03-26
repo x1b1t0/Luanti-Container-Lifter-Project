@@ -88,7 +88,7 @@ crear_servidor() {
         docker.io/linuxserver/luanti:latest
 
     if [ $? -ne 0 ]; then
-        echo "❌ Error al iniciar el servidor." >&2
+        echo " Error al iniciar el servidor." >&2
         return 1
     fi
 
@@ -97,7 +97,7 @@ crear_servidor() {
 
     sudo chown -R www-data:www-data "$volumen_dir"
 
-    echo "✅ Servidor '$nombre_servidor' funcionando en puerto $puerto_servidor!"
+    echo " Servidor '$nombre_servidor' funcionando en puerto $puerto_servidor!"
 }
 
 # Llamar a la función con los parámetros pasados desde PHP
