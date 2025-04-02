@@ -1,7 +1,6 @@
 
 <?php
 // Verifica si la solicitud HTTP es de tipo POST
-shell_exec('sudo /home/scriptluanti/containerlifter.sh');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     error_log("recupera los campos del form",0);
     // Obtiene el valor del campo 'server_name' enviado por el formulario y lo limpia
