@@ -82,18 +82,21 @@ crear_servidor() {
     sudo chown -R www-data:www-data "$volumen_dir"
 
     # Ejecutar el contenedor de Podman
-    podman run -d --name="$nombre_servidor" -p "$puerto_servidor:30000/udp" \
-        -e LUANTI_WORLDNAME="$nombre_servidor" \
+    sudo podman run -d --name="$nombre_servidor" -p "$puerto_servidor:30000/udp" \
+        -e PUID=1000 \
+        -e PGID=1000 \
+        -e TZ=Etc/UTC \
+        -e CLI_ARGS="--gameid devtest" `#optional` \
         -v "$volumen_dir:/config/.minetest" \
-        docker.io/linuxserver/luanti:latest
+        lscr.io/linuxserver/luanti:latest
 
     if [ $? -ne 0 ]; then
         echo " Error al iniciar el servidor." >&2
         return 1
     fi
 
-    sleep 3
-    podman exec "$nombre_servidor" mkdir -p /config/.minetest/main-config
+    #sleep 3
+    #podman exec "$nombre_servidor" mkdir -p /config/.minetest/main-config
 
     sudo chown -R www-data:www-data "$volumen_dir"
 
@@ -102,6 +105,5 @@ crear_servidor() {
 
 # Llamar a la función con los parámetros pasados desde PHP
 crear_servidor "$1" "$2" "$3" "$4"
-
 
 
