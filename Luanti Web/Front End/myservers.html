@@ -24,20 +24,25 @@
         document.addEventListener('DOMContentLoaded', () => {
             const serverList = document.getElementById('servers');
 
-            // Example server data
-            const servers = [
-                { name: 'Server 1', ip: '192.168.1.1' },
-                { name: 'Server 2', ip: '192.168.1.2' },
-                { name: 'Server 3', ip: '192.168.1.3' }
-            ];
-
-            servers.forEach(server => {
-                const listItem = document.createElement('li');
-                listItem.textContent = `${server.name} (${server.ip})`;
-                serverList.appendChild(listItem);
-            });
+            // Fetch server data from showservers.php
+            fetch('showservers.php')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(servers => {
+                    servers.forEach(server => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = `${server.name} (${server.ip})`;
+                        serverList.appendChild(listItem);
+                    });
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
         });
-
     </script>
 
     <nav>
