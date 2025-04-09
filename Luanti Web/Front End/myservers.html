@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"></html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,30 +20,6 @@
     <footer>
         <p>&copy; 2025 Atlantis</p>
     </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const serverList = document.getElementById('servers');
-
-            // Fetch server data from showservers.php
-            fetch('showservers.php')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(servers => {
-                    servers.forEach(server => {
-                        const listItem = document.createElement('li');
-                        listItem.textContent = `${server.name} (${server.ip})`;
-                        serverList.appendChild(listItem);
-                    });
-                })
-                .catch(error => {
-                    console.error('There was a problem with the fetch operation:', error);
-                });
-        });
-    </script>
 
     <nav>
         <ul>
@@ -52,9 +28,9 @@
             <li><a href="contact.html">Contact</a></li>
             <li><a href="myservers.html">My Servers</a></li>
             <li><a href="login.html">Login</a></li>
-
         </ul>
-      </nav>
+    </nav>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -136,5 +112,19 @@
             border-bottom: none;
         }
     </style>
+
+    <script>
+fetch('showservers.php')
+    .then(response => response.json())
+    .then(data => {
+        const serverList = document.getElementById('servers');
+        data.forEach(server => {
+            const li = document.createElement('li');
+            li.textContent = `Name: ${server.name} | Ports: ${server.ports}`;
+            serverList.appendChild(li);
+        });
+    })
+    .catch(error => console.error('Error fetching server data:', error));
+    </script>
 </body>
 </html>
