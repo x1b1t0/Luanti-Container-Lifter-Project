@@ -1,95 +1,28 @@
 <!DOCTYPE HTML>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Contact Form</title>
-
-  <!-- Link to the css document. not applicable in codepen.--->
   <link rel="stylesheet" type="text/css" href="style.css">
-  
-  </head>
-
-
-<body>  
-
-<nav>
-  <ul>
-      <li><a href="paginaprincipal.html">Home</a></li>
-      <li><a href="startserver.html">Start Server</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="myservers.html">My Servers</a></li>
-  </ul>
-</nav>
-  
-  <!-- contact form in html and css -->  
-
-  <div class="contact_form">
-
-    <div class="formulario">      
-      <h1>Contact Form</h1>
-        <h3>Write to us and we will get in touch with you shortly</h3>
-
-
-        <form action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="839d3b58-87db-4f38-b8df-60d0318e9fc2">
-            <input type="hidden" name="redirect" value="https://web3forms.com/success">
-            <input type="hidden" name="email" value="atlantishelpme@gmail.com">
-                <p>
-                  <label for="name" class="colocar_nombre">Name
-                    <span class="obligatorio">*</span>
-                  </label>
-                    <input type="text" name="name" id="name" required="required" placeholder="Enter your name">
-                </p>
-              
-                <p>
-                  <label for="email" class="colocar_email">Email
-                    <span class="obligatorio">*</span>
-                  </label>
-                    <input type="email" name="email" id="email" required="required" placeholder="Enter your Email">
-                </p>
-            
-               
-                <p>
-                  <label for="subject" class="colocar_asunto">Subject
-                    <span class="obligatorio">*</span>
-                  </label>
-                    <input type="text" name="subject" id="subject" required="required" placeholder="Enter a subject">
-                </p>    
-              
-                <p>
-                  <label for="message" class="colocar_mensaje">Message
-                    <span class="obligatorio">*</span>
-                  </label>                     
-                                    <textarea name="message" class="texto_mensaje" id="message" required="required" placeholder="Leave your comment here..."></textarea> 
-                                </p>                    
-              
-                <button type="submit" name="Formulario" id="send"><p>Send</p></button>
-
-                <p class="aviso">
-                  <span class="obligatorio"> * </span>fields are required.
-                </p>          
-            
-          </form>
-    </div>  
-  </div>
-
-</body>
-</html></form>
-<style>
+  <style>
+    /* Centrar la barra de navegación */
     nav {
         background-color: #333;
-        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
     }
 
     nav ul {
         list-style-type: none;
         margin: 0;
         padding: 0;
+        display: flex;
     }
 
     nav ul li {
-        float: left;
+        margin: 0 10px;
     }
 
     nav ul li a, .dropbtn {
@@ -132,4 +65,59 @@
     .dropdown:hover .dropdown-content {
         display: block;
     }
-</style>
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <ul>
+        <li><a href="paginaprincipal.html">Home</a></li>
+        <li><a href="startserver.html">Start Server</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="myservers.html">My Servers</a></li>
+        <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+
+  <div class="contact_form">
+    <div class="formulario">
+      <h1>Contact Form</h1>
+      <h3>Write to us and we will get in touch with you shortly</h3>
+
+      <form action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="839d3b58-87db-4f38-b8df-60d0318e9fc2">
+        <input type="hidden" name="redirect" value="https://web3forms.com/success">
+        <input type="hidden" name="email" value="atlantishelpme@gmail.com">
+
+        <p>
+          <label for="name" class="colocar_nombre">Name <span class="obligatorio">*</span></label>
+          <input type="text" name="name" id="name" required="required" placeholder="Enter your name">
+        </p>
+
+        <p>
+          <label for="email" class="colocar_email">Email <span class="obligatorio">*</span></label>
+          <input type="email" name="email" id="email" required="required" placeholder="Enter your Email">
+        </p>
+
+        <p>
+          <label for="subject" class="colocar_asunto">Subject <span class="obligatorio">*</span></label>
+          <input type="text" name="subject" id="subject" required="required" placeholder="Enter a subject">
+        </p>
+
+        <p>
+          <label for="message" class="colocar_mensaje">Message <span class="obligatorio">*</span></label>
+          <textarea name="message" class="texto_mensaje" id="message" required="required" placeholder="Leave your comment here..."></textarea>
+        </p>
+
+        <button type="submit" name="Formulario" id="send"><p>Send</p></button>
+
+        <p class="aviso">
+          <span class="obligatorio"> * </span>fields are required.
+        </p>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
