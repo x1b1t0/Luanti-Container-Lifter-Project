@@ -1,4 +1,3 @@
-
 <?php
 // Verifica si la solicitud HTTP es de tipo POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
