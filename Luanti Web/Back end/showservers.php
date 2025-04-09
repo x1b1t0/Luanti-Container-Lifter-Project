@@ -1,10 +1,16 @@
 <?php
-$showservers = shell_exec('sudo podman ps -a --format "table {{.Names}}\t{{.Ports}}#"');
-$serversarray = explode("#", $showservers);
+$showservers = shell_exec('sudo podman ps -a --format "{{.Names}}#{{.Ports}}"');
+$serversarray = explode("\n", trim($showservers)); // Dividir por líneas
 
-//Hacer un bucle que empiece en el 0 el limite es la longitud del array por cada contenedor que hay crea una fila nueva
-foreach ($serversarray as $fila){
- echo "fila: $fila";
+$servers = [];
+foreach ($serversarray as $fila) {
+    list($name, $ports) = explode("#", $fila); // Dividir cada línea en nombre y puertos
+    $servers[] = [
+        "name" => trim($name),
+        "ports" => trim($ports)
+    ];
 }
-//Hay que hacer que el HTML coja el php y con esta informacion cree una table bien organizada y estructurada de todos los valores que aqui aaprecen
+
+header('Content-Type: application/json'); // Indicar que la salida es JSON
+echo json_encode($servers);
 ?>
