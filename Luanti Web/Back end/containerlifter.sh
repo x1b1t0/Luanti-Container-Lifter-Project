@@ -83,11 +83,7 @@ crear_servidor() {
 
     # Ejecutar el contenedor de Podman
     sudo podman run -d --name="$nombre_servidor" -p "$puerto_servidor:30000/udp" \
-        -e PUID=1000 \
-        -e PGID=1000 \
-        -e TZ=Etc/UTC \
-        -e CLI_ARGS="--gameid devtest" `#optional` \
-        -v "$volumen_dir:/config/.minetest" \
+        -e CLI_ARGS="--gameid minetest" `#optional` \
         lscr.io/linuxserver/luanti:latest
 
     if [ $? -ne 0 ]; then
@@ -105,5 +101,3 @@ crear_servidor() {
 
 # Llamar a la función con los parámetros pasados desde PHP
 crear_servidor "$1" "$2" "$3" "$4"
-
-
