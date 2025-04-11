@@ -15,4 +15,17 @@ if (!$containerName) {
 // Comando base para Podman
 $podmanCommand = "podman";
 // Comando a ejecutar
+switch ($action) {
+    case 'start':
+        $command = "$podmanCommand start $containerName";
+        break;
+    case 'stop':
+        $command = "$podmanCommand stop $containerName";
+        break;
+    case 'remove':
+        $command = "$podmanCommand rm $containerName";
+        break;
+    default:
+        exit(json_encode(["success" => false, "message" => "Acción no válida."]));
+}
 ?>
