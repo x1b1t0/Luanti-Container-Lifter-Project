@@ -1,0 +1,1 @@
+La base de datos constara de usuario y contraseña, sin correo ni nada, tendra que guardar a quien pertenece cada mundo etc, las cosas necesarias.
