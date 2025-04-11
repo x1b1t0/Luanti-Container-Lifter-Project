@@ -28,4 +28,5 @@ switch ($action) {
     default:
         exit(json_encode(["success" => false, "message" => "Acción no válida."]));
 }
+// Ejecutar el comando
 ?>
