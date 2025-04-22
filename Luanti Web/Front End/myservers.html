@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,24 +21,14 @@
     <main>
         <section id="server-list">
             <h2>Available Servers</h2>
-            <ul id="servers">
+            <div id="servers" class="server-grid">
                 <!-- Server list will be populated here -->
-            </ul>
+            </div>
         </section>
     </main>
     <footer>
         <p>&copy; 2025 Atlantis</p>
     </footer>
-
-    <nav>
-        <ul>
-            <li><a href="paginaprincipal.html">Home</a></li>
-            <li><a href="startserver.html">Start Server</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="myservers.html">My Servers</a></li>
-            <li><a href="login.html">Login</a></li>
-        </ul>
-    </nav>
 
     <style>
         body {
@@ -107,25 +97,102 @@
             margin-top: 0;
         }
 
-        #servers {
-            list-style: none;
-            padding: 0;
+        .server-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
         }
 
-        #servers li {
-            padding: 0.5rem;
-            border-bottom: 1px solid #ddd;
+        .server-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        #servers li:last-child {
-            border-bottom: none;
+        .server-card h3 {
+            margin: 0 0 0.5rem;
+        }
+
+        .server-info {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .server-actions {
+            margin-top: auto;
         }
 
         .server-actions button {
             margin-right: 5px;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            background-color: #007BFF;
+            cursor: pointer;
+        }
+
+        .server-actions button:hover {
+            background-color: #0056b3;
+        }
+
+        .server-actions button:nth-child(2) {
+            background-color: #FF5733;
+        }
+
+        .server-actions button:nth-child(2):hover {
+            background-color: #c44128;
+        }
+
+        .server-actions button:nth-child(3) {
+            background-color: #28a745;
+        }
+
+        .server-actions button:nth-child(3):hover {
+            background-color: #1e7c31;
         }
     </style>
 
-   
-</body>
-</html>
+    <script>
+        // Fetch server data from showservers.php
+        fetch('showservers.php')
+            .then(response => response.json())
+            .then(data => {
+                const serverGrid = document.getElementById('servers');
+                data.forEach(server => {
+                    const div = document.createElement('div');
+                    div.className = 'server-card';
+                    div.innerHTML = `
+                        <h3>${server.name}</h3>
+                        <p class="server-info">Ports: ${server.ports || 'N/A'}</p>
+                        <div class="server-actions">
+                            <button onclick="manageContainer('start', '${server.name}')">Start</button>
+                            <button onclick="manageContainer('stop', '${server.name}')">Stop</button>
+                            <button onclick="manageContainer('remove', '${server.name}')">Remove</button>
+                        </div>
+                    `;
+                    serverGrid.appendChild(div);
+                });
+            })
+            .catch(error => console.error('Error fetching server data:', error));
+
+        // Function to handle container actions
+        function manageContainer(action, containerName) {
+            fetch('container-manager.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action, name: containerName })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message || `Action ${action} performed successfully on ${containerName}`);
+                })
+                .catch(error => console.error('Error managing container:', error));
+        }
+    </script>
