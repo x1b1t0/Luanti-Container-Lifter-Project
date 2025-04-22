@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en"></html>
+!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +9,15 @@
     <header>
         <h1>Server List</h1>
     </header>
+<nav>
+    <ul>
+        <li><a href="paginaprincipal.html">Home</a></li>
+        <li><a href="startserver.html">Start Server</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="myservers.html">My Servers</a></li>
+        <li><a href="login.html">Login</a></li>
+    </ul>
+</nav>
     <main>
         <section id="server-list">
             <h2>Available Servers</h2>
@@ -20,8 +29,6 @@
     <footer>
         <p>&copy; 2025 Atlantis</p>
     </footer>
-  <!-- Lo que llevo para hacer que funcione el PHP y muestre el nombre, puerto y ip -->
-<form action="index.php" method="get">
 
     <nav>
         <ul>
@@ -30,9 +37,9 @@
             <li><a href="contact.html">Contact</a></li>
             <li><a href="myservers.html">My Servers</a></li>
             <li><a href="login.html">Login</a></li>
-
         </ul>
-      </nav>
+    </nav>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -113,6 +120,46 @@
         #servers li:last-child {
             border-bottom: none;
         }
+
+        .server-actions button {
+            margin-right: 5px;
+        }
     </style>
+
+    <script>
+        // Fetch server data from showservers.php
+        fetch('showservers.php')
+            .then(response => response.json())
+            .then(data => {
+                const serverList = document.getElementById('servers');
+                data.forEach(server => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                       <h3> Name: ${server.name}</h3> | Ports: ${server.ports || 'N/A'}
+                        <div class="server-actions">
+                            <button onclick="manageContainer('start', '${server.name}')">Start</button>
+                            <button onclick="manageContainer('stop', '${server.name}')">Stop</button>
+                            <button onclick="manageContainer('remove', '${server.name}')">Remove</button>
+                        </div>
+                    `;
+                    serverList.appendChild(li);
+                });
+            })
+            .catch(error => console.error('Error fetching server data:', error));
+
+        // Function to handle container actions
+        function manageContainer(action, containerName) {
+            fetch('container-manager.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action, name: containerName })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message || `Action ${action} performed successfully on ${containerName}`);
+                })
+                .catch(error => console.error('Error managing container:', error));
+        }
+    </script>
 </body>
 </html>
