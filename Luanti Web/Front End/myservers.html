@@ -159,7 +159,7 @@
         }
     </style>
 
-    <script>
+     <script>
         // Fetch server data from showservers.php
         fetch('showservers.php')
             .then(response => response.json())
@@ -170,7 +170,8 @@
                     div.className = 'server-card';
                     div.innerHTML = `
                         <h3>${server.name}</h3>
-                        <p class="server-info">Ports: ${server.ports || 'N/A'}</p>
+                        <p class="server-info"><strong>Status:</strong> ${server.status || 'Unknown'}</p>
+                        <p class="server-info"><strong>Ports:</strong> ${server.ports || 'N/A'}</p>
                         <div class="server-actions">
                             <button onclick="manageContainer('start', '${server.name}')">Start</button>
                             <button onclick="manageContainer('stop', '${server.name}')">Stop</button>
