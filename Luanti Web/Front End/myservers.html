@@ -134,7 +134,6 @@
                 const serverList = document.getElementById('servers');
                 data.forEach(server => {
                     const li = document.createElement('li');
-                    li.innerHTML = `
                        <h3> Name: ${server.name}</h3> | Ports: ${server.ports || 'N/A'}
                         <div class="server-actions">
                             <button onclick="manageContainer('start', '${server.name}')">Start</button>
