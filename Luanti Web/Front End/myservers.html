@@ -126,39 +126,6 @@
         }
     </style>
 
-    <script>
-        // Fetch server data from showservers.php
-        fetch('showservers.php')
-            .then(response => response.json())
-            .then(data => {
-                const serverList = document.getElementById('servers');
-                data.forEach(server => {
-                    const li = document.createElement('li');
-                       <h3> Name: ${server.name}</h3> | Ports: ${server.ports || 'N/A'}
-                        <div class="server-actions">
-                            <button onclick="manageContainer('start', '${server.name}')">Start</button>
-                            <button onclick="manageContainer('stop', '${server.name}')">Stop</button>
-                            <button onclick="manageContainer('remove', '${server.name}')">Remove</button>
-                        </div>
-                    `;
-                    serverList.appendChild(li);
-                });
-            })
-            .catch(error => console.error('Error fetching server data:', error));
-
-        // Function to handle container actions
-        function manageContainer(action, containerName) {
-            fetch('container-manager.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ action, name: containerName })
-            })
-                .then(response => response.json())
-                .then(data => {
-                    alert(data.message || `Action ${action} performed successfully on ${containerName}`);
-                })
-                .catch(error => console.error('Error managing container:', error));
-        }
-    </script>
+   
 </body>
 </html>
