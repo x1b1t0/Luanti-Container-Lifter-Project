@@ -1,19 +1,29 @@
 <?php
 // showservers.php
-// Este script se encarga de mostrar los servidores que están corriendo en el sistema.
-// Se utiliza el comando 'podman ps -a' para obtener la lista de contenedores y sus puertos.
+// Este script muestra los servidores que están corriendo en el sistema
+// además de incluir la IP de la interfaz enp0s3.
+
+// Obtener la IP de la interfaz enp0s3
+$ipOutput = shell_exec("ip -4 addr show enp0s3 | grep -oP '(?<=inet\\s)\\d+(\\.\\d+){3}'");
+$ipAddress = trim($ipOutput); // Limpiar espacios en blanco
+
+// Obtener información de los servidores
 $showservers = shell_exec('sudo podman ps -a --format "{{.Names}}#{{.Ports}}#{{.Status}}"');
 $serversarray = explode("\n", trim($showservers)); // Dividir por líneas
 $servers = [];
 foreach ($serversarray as $fila) {
-    list($name, $ports, $status) = explode("#", $fila); // Dividir cada línea en nombre y puertos
-    $servers[] = [
-        "name" => trim($name),
-        "ports" => trim($ports),
-        "status" => trim($status)
-    ];
+    if (!empty($fila)) { // Verificar que la línea no esté vacía
+        list($name, $ports, $status) = explode("#", $fila); // Dividir cada línea en nombre, puertos y estado
+        $servers[] = [
+            "name" => trim($name),
+            "ports" => trim($ports),
+            "status" => trim($status),
+            "ip" => $ipAddress // Agregar la IP de enp0s3 a cada servidor
+        ];
+    }
 }
-// Convertir la lista de servidores a formato JSON y enviarla como respuesta al php en la pagina myservers.html
+
+// Convertir la lista de servidores a formato JSON
 header('Content-Type: application/json'); // Indicar que la salida es JSON
 echo json_encode($servers);
 ?>
