@@ -3,11 +3,11 @@
 // Este script muestra los servidores que están corriendo en el sistema
 // además de incluir la IP de la interfaz enp0s3.
 
-// Obtener la IP de la interfaz enp0s3
+// Conseguir la IP de la interfaz enp0s3
 $ipOutput = shell_exec("ip -4 addr show enp0s3 | grep -oP '(?<=inet\\s)\\d+(\\.\\d+){3}'");
 $ipAddress = trim($ipOutput); // Limpiar espacios en blanco
 
-// Obtener información de los servidores
+// Coger información de los servidores
 $showservers = shell_exec('sudo podman ps -a --format "{{.Names}}#{{.Ports}}#{{.Status}}"');
 $serversarray = explode("\n", trim($showservers)); // Dividir por líneas
 $servers = [];
