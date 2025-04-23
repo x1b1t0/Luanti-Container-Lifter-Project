@@ -14,17 +14,16 @@ $servers = [];
 foreach ($serversarray as $fila) {
     if (!empty($fila)) { // Verificar que la línea no esté vacía
         list($name, $ports, $status) = explode("#", $fila); // Dividir cada línea en nombre, puertos y estado
-
         // Extraer el puerto externo de los contenedores de podman que contienen los servidores luanti para jugar.
         preg_match('/:(\d+)->/', $ports, $matches); // Búsqueda del puerto externo
         $externalPort = $matches[1] ?? 'N/A'; // Si no encuentra puerto o no hay puerto, usar 'N/A'
 
         // Traducir el estado
-        $traduccionestado = match (strtolower(trim($status))) {
-            'created' => 'Stopped',
-            'up' => 'Active',
-            'exited' => 'Detained',
-            default => 'Unknown'
+        $traduccionestado = match (true) {
+            str_contains(strtolower($status), 'created') => 'Stopped',
+            str_contains(strtolower($status), 'up') => 'Active',
+            str_contains(strtolower($status), 'exited') => 'Detained',
+            default => 'Unknown',
         };
 
         $servers[] = [
@@ -35,7 +34,6 @@ foreach ($serversarray as $fila) {
         ];
     }
 }
-
 // Convertir la lista de servidores a formato JSON
 header('Content-Type: application/json'); // Indicar que la salida es JSON
 echo json_encode($servers);
