@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="luanti.ico">
+
     <title>Server List</title>
 </head>
 <body>
@@ -12,7 +13,7 @@
     </header>
 <nav>
     <ul>
-        <li><a href="paginaprincipal.html">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="startserver.html">Start Server</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="myservers.html">My Servers</a></li>
@@ -159,9 +160,8 @@
             background-color: #1e7c31;
         }
     </style>
-
-    <script>
-    // Fetch server data from showservers.php
+<script>
+ // Fetch server data from showservers.php
     fetch('showservers.php')
         .then(response => response.json())
         .then(data => {
@@ -170,10 +170,19 @@
                 const div = document.createElement('div');
                 div.className = 'server-card';
 
+                // Determinar el color según el estado
+                const statusClass = server.status === 'up'
+                    ? 'status-up'
+                    : server.status === 'detained'
+                    ? 'status-detained'
+                    : server.status === 'stopped'
+                    ? 'status-stopped'
+                    : 'status-unknown';
+
                 // Crear el contenido HTML para cada servidor
                 div.innerHTML = `
                     <h3>${server.name}</h3>
-                    <p class="server-info"><strong>Status:</strong> ${server.status || 'Unknown'}</p>
+                    <p class="server-info"><strong>Status:</strong> <span class="${statusClass}">${server.status || 'Unknown'}</span></p>
                     <p class="server-info"><strong>Ports:</strong> ${server.ports || 'N/A'}</p>
                     <p class="server-info"><strong>IP:</strong> ${server.ip || 'N/A'}</p>
                     <div class="server-actions">
@@ -201,5 +210,9 @@
             .catch(error => console.error('Error managing container:', error));
     }
 </script>
+
+</script>
 </body>
 </html>
+
+
