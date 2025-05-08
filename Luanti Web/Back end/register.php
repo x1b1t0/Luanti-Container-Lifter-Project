@@ -3,26 +3,25 @@ require 'db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST["username"]);
-    $password = $_POST["password"];
+    $email = trim($_POST["email"]);
+    $password = trim($_POST["password"]);
 
-    $sql = "SELECT * FROM luanti WHERE username = ?";
+    // Hashear la contraseña
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    $sql = "INSERT INTO luanti (username, email, password, date) VALUES (?, ?, ?, NOW())";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    $stmt->bind_param("sss", $username, $email, $hashedPassword);
 
-    if ($row = $result->fetch_assoc()) {
-        if (password_verify($password, $row['password'])) {
-            echo "Login exitoso. ¡Bienvenido, " . htmlspecialchars($row['username']) . "!";
-        } else {
-            echo "Contraseña incorrecta.";
-        }
+    if ($stmt->execute()) {
+        echo "Registro exitoso. <a href='login.html'>Iniciar sesión</a>";
     } else {
-        echo "Usuario no encontrado.";
+        echo "Error al registrar: " . $stmt->error;
     }
 
     $stmt->close();
     $conn->close();
 }
 ?>
+
 
